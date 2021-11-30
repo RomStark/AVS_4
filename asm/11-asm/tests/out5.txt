@@ -1,0 +1,6 @@
+Filled Container:
+number encryption: text = fragile | encrypted text = 1ragile | symbols = ['f' -> '1'] | func result = 91.250000
+number encryption: text = intimidation | encrypted text = 5nt5m5dat5on | symbols = ['i' -> '5'] | func result = 99.153846
+Sorted Container:
+number encryption: text = fragile | encrypted text = 1ragile | symbols = ['f' -> '1'] | func result = 91.250000
+number encryption: text = intimidation | encrypted text = 5nt5m5dat5on | symbols = ['i' -> '5'] | func result = 99.153846

@@ -1,0 +1,15 @@
+Filled Container:
+cycle encryption: text = powerstation | encrypted text = stationpower | n = 5 | func result = 102.076923
+cycle encryption: text = wedding | encrypted text = ngweddi | n = 19 | func result = 92.250000
+cycle encryption: text = day | encrypted text = ayd | n = 100 | func result = 79.500000
+cycle encryption: text = saturday | encrypted text = saturday | n = 0 | func result = 97.444444
+cycle encryption: text = crocodile | encrypted text = lecrocodi | n = 34 | func result = 94.800000
+cycle encryption: text = row | encrypted text = row | n = 3 | func result = 86.000000
+Sorted Container:
+cycle encryption: text = day | encrypted text = ayd | n = 100 | func result = 79.500000
+cycle encryption: text = row | encrypted text = row | n = 3 | func result = 86.000000
+cycle encryption: text = wedding | encrypted text = ngweddi | n = 19 | func result = 92.250000
+cycle encryption: text = crocodile | encrypted text = lecrocodi | n = 34 | func result = 94.800000
+cycle encryption: text = saturday | encrypted text = saturday | n = 0 | func result = 97.444444
+cycle encryption: text = powerstation | encrypted text = stationpower | n = 5 | func result = 102.076923
+

@@ -1,0 +1,228 @@
+     1                                  ;--------------------------------------------------------------------------------------------
+     2                                  ; inrnd.asm - единица компиляции, вбирающая функции для генерации случайных входных данных
+     3                                  ;--------------------------------------------------------------------------------------------
+     4                                  
+     5                                  extern rand
+     6                                  extern Encrypt
+     7                                  
+     8                                  ;----------------------------------------------
+     9                                  ; Заполняет шифрование случайными данными (в том числе случайный тип шифрования)
+    10                                  ; bool RandomEncryption(Encryption *block)
+    11                                  ; {
+    12                                  ;     block->encryption_type = 1 + rand() % 3;
+    13                                      ; block->shift = rand() % 101;
+    14                                      ; block->encryption_alphabet[0] = 'a' + rand() % 26;
+    15                                      ; block->encryption_alphabet[1] = 'a' + rand() % 26;
+    16                                      ; block->number_alphabet[0] = 'a' + rand() % 26;
+    17                                      ; block->number_alphabet[1] = 48 + rand() % 10;
+    18                                      ; int len = 1 + rand() % 31;
+    19                                      ; for (int i = 0; i < len; ++i)
+    20                                      ; {
+    21                                      ;     block->text[i] = 'a' + rand() % 26;
+    22                                      ;     block->encrypted_text[i] = 0;
+    23                                      ; }
+    24                                  ;     return true;
+    25                                  ; }
+    26                                  ;----------------------------------------------
+    27                                  global RandomEncryption
+    28                                  RandomEncryption:
+    29                                  section .text
+    30 00000000 55                          push    rbp
+    31 00000001 4889E5                      mov     rbp, rsp
+    32 00000004 4883EC20                    sub     rsp, 32
+    33 00000008 48897DE8                    mov     qword[rbp-24], rdi
+    34 0000000C E8(00000000)                call    rand
+    35 00000011 4863D0                      movsx   rdx, eax
+    36 00000014 4869D256555555              imul    rdx, rdx, 1431655766
+    37 0000001B 48C1EA20                    shr     rdx, 32
+    38 0000001F 89C1                        mov     ecx, eax
+    39 00000021 C1F91F                      sar     ecx, 31
+    40 00000024 29CA                        sub     edx, ecx
+    41 00000026 89D1                        mov     ecx, edx
+    42 00000028 01C9                        add     ecx, ecx
+    43 0000002A 01D1                        add     ecx, edx
+    44 0000002C 29C8                        sub     eax, ecx
+    45 0000002E 89C2                        mov     edx, eax
+    46 00000030 83C201                      add     edx, 1
+    47 00000033 488B45E8                    mov     rax, qword[rbp-24]
+    48 00000037 8910                        mov     dword[rax], edx
+    49 00000039 E8(00000000)                call    rand
+    50 0000003E 4863D0                      movsx   rdx, eax
+    51 00000041 4869D2CBF08D28              imul    rdx, rdx, 680390859
+    52 00000048 48C1EA20                    shr     rdx, 32
+    53 0000004C C1FA04                      sar     edx, 4
+    54 0000004F 89C1                        mov     ecx, eax
+    55 00000051 C1F91F                      sar     ecx, 31
+    56 00000054 29CA                        sub     edx, ecx
+    57 00000056 6BCA65                      imul    ecx, edx, 101
+    58 00000059 29C8                        sub     eax, ecx
+    59 0000005B 89C2                        mov     edx, eax
+    60 0000005D 488B45E8                    mov     rax, qword[rbp-24]
+    61 00000061 895004                      mov     dword[rax+4], edx
+    62 00000064 E8(00000000)                call    rand
+    63 00000069 4863D0                      movsx   rdx, eax
+    64 0000006C 4869D24FECC44E              imul    rdx, rdx, 1321528399
+    65 00000073 48C1EA20                    shr     rdx, 32
+    66 00000077 C1FA03                      sar     edx, 3
+    67 0000007A 89C1                        mov     ecx, eax
+    68 0000007C C1F91F                      sar     ecx, 31
+    69 0000007F 29CA                        sub     edx, ecx
+    70 00000081 6BCA1A                      imul    ecx, edx, 26
+    71 00000084 29C8                        sub     eax, ecx
+    72 00000086 89C2                        mov     edx, eax
+    73 00000088 89D0                        mov     eax, edx
+    74 0000008A 83C061                      add     eax, 97
+    75 0000008D 89C2                        mov     edx, eax
+    76 0000008F 488B45E8                    mov     rax, qword[rbp-24]
+    77 00000093 885008                      mov     byte[rax+8], dl
+    78 00000096 E8(00000000)                call    rand
+    79 0000009B 4863D0                      movsx   rdx, eax
+    80 0000009E 4869D24FECC44E              imul    rdx, rdx, 1321528399
+    81 000000A5 48C1EA20                    shr     rdx, 32
+    82 000000A9 C1FA03                      sar     edx, 3
+    83 000000AC 89C1                        mov     ecx, eax
+    84 000000AE C1F91F                      sar     ecx, 31
+    85 000000B1 29CA                        sub     edx, ecx
+    86 000000B3 6BCA1A                      imul    ecx, edx, 26
+    87 000000B6 29C8                        sub     eax, ecx
+    88 000000B8 89C2                        mov     edx, eax
+    89 000000BA 89D0                        mov     eax, edx
+    90 000000BC 83C061                      add     eax, 97
+    91 000000BF 89C2                        mov     edx, eax
+    92 000000C1 488B45E8                    mov     rax, qword[rbp-24]
+    93 000000C5 885009                      mov     byte[rax+9], dl
+    94 000000C8 E8(00000000)                call    rand
+    95 000000CD 4863D0                      movsx   rdx, eax
+    96 000000D0 4869D24FECC44E              imul    rdx, rdx, 1321528399
+    97 000000D7 48C1EA20                    shr     rdx, 32
+    98 000000DB C1FA03                      sar     edx, 3
+    99 000000DE 89C1                        mov     ecx, eax
+   100 000000E0 C1F91F                      sar     ecx, 31
+   101 000000E3 29CA                        sub     edx, ecx
+   102 000000E5 6BCA1A                      imul    ecx, edx, 26
+   103 000000E8 29C8                        sub     eax, ecx
+   104 000000EA 89C2                        mov     edx, eax
+   105 000000EC 89D0                        mov     eax, edx
+   106 000000EE 83C061                      add     eax, 97
+   107 000000F1 89C2                        mov     edx, eax
+   108 000000F3 488B45E8                    mov     rax, qword[rbp-24]
+   109 000000F7 88500A                      mov     byte[rax+10], dl
+   110 000000FA E8(00000000)                call    rand
+   111 000000FF 89C2                        mov     edx, eax
+   112 00000101 4863C2                      movsx   rax, edx
+   113 00000104 4869C067666666              imul    rax, rax, 1717986919
+   114 0000010B 48C1E820                    shr     rax, 32
+   115 0000010F C1F802                      sar     eax, 2
+   116 00000112 89D6                        mov     esi, edx
+   117 00000114 C1FE1F                      sar     esi, 31
+   118 00000117 29F0                        sub     eax, esi
+   119 00000119 89C1                        mov     ecx, eax
+   120 0000011B 89C8                        mov     eax, ecx
+   121 0000011D C1E002                      sal     eax, 2
+   122 00000120 01C8                        add     eax, ecx
+   123 00000122 01C0                        add     eax, eax
+   124 00000124 89D1                        mov     ecx, edx
+   125 00000126 29C1                        sub     ecx, eax
+   126 00000128 89C8                        mov     eax, ecx
+   127 0000012A 83C030                      add     eax, 48
+   128 0000012D 89C2                        mov     edx, eax
+   129 0000012F 488B45E8                    mov     rax, qword[rbp-24]
+   130 00000133 88500B                      mov     byte[rax+11], dl
+   131 00000136 E8(00000000)                call    rand
+   132 0000013B 4863D0                      movsx   rdx, eax
+   133 0000013E 4869D289888888              imul    rdx, rdx, -2004318071
+   134 00000145 48C1EA20                    shr     rdx, 32
+   135 00000149 01C2                        add     edx, eax
+   136 0000014B C1FA03                      sar     edx, 3
+   137 0000014E 89C1                        mov     ecx, eax
+   138 00000150 C1F91F                      sar     ecx, 31
+   139 00000153 29CA                        sub     edx, ecx
+   140 00000155 89D1                        mov     ecx, edx
+   141 00000157 C1E104                      sal     ecx, 4
+   142 0000015A 29D1                        sub     ecx, edx
+   143 0000015C 29C8                        sub     eax, ecx
+   144 0000015E 89C2                        mov     edx, eax
+   145 00000160 8D4201                      lea     eax, [rdx+1]
+   146 00000163 8945F8                      mov     dword[rbp-8], eax
+   147 00000166 C745FC00000000              mov     dword[rbp-4], 0
+   148 0000016D EB4A                        jmp     .for_cond
+   149                                  .for_loop:
+   150 0000016F E8(00000000)                call    rand
+   151 00000174 4863D0                      movsx   rdx, eax
+   152 00000177 4869D24FECC44E              imul    rdx, rdx, 1321528399
+   153 0000017E 48C1EA20                    shr     rdx, 32
+   154 00000182 C1FA03                      sar     edx, 3
+   155 00000185 89C1                        mov     ecx, eax
+   156 00000187 C1F91F                      sar     ecx, 31
+   157 0000018A 29CA                        sub     edx, ecx
+   158 0000018C 6BCA1A                      imul    ecx, edx, 26
+   159 0000018F 29C8                        sub     eax, ecx
+   160 00000191 89C2                        mov     edx, eax
+   161 00000193 89D0                        mov     eax, edx
+   162 00000195 83C061                      add     eax, 97
+   163 00000198 89C1                        mov     ecx, eax
+   164 0000019A 488B55E8                    mov     rdx, qword[rbp-24]
+   165 0000019E 8B45FC                      mov     eax, dword[rbp-4]
+   166 000001A1 4898                        cdqe
+   167 000001A3 884C020C                    mov     byte[rdx+12+rax], cl
+   168 000001A7 488B55E8                    mov     rdx, qword[rbp-24]
+   169 000001AB 8B45FC                      mov     eax, dword[rbp-4]
+   170 000001AE 4898                        cdqe
+   171 000001B0 C644027000                  mov     byte[rdx+112+rax], 0
+   172 000001B5 8345FC01                    add     dword[rbp-4], 1
+   173                                  .for_cond:
+   174 000001B9 8B45FC                      mov     eax, dword[rbp-4]
+   175 000001BC 3B45F8                      cmp     eax, dword[rbp-8]
+   176 000001BF 7CAE                        jl      .for_loop
+   177 000001C1 B801000000                  mov     eax, 1
+   178 000001C6 C9                          leave
+   179 000001C7 C3                          ret
+   180                                  
+   181                                  ;----------------------------------------------
+   182                                  ; Заполняет контейнер случайными шифрованиями
+   183                                  ; bool InRndContainer(Container *cont)
+   184                                  ; {
+   185                                  ;     cont->size = rand() % 10001;
+   186                                  ;     for (int i = 0; i < cont->size; ++i) {
+   187                                  ;         RandomEncryption(&cont->encryptions[i]);
+   188                                  ;     }
+   189                                  ; }
+   190                                  ;----------------------------------------------
+   191                                  global InRndContainer
+   192                                  InRndContainer:
+   193                                  section .text
+   194 000001C8 55                          push    rbp
+   195 000001C9 4889E5                      mov     rbp, rsp
+   196 000001CC 4883EC20                    sub     rsp, 32
+   197 000001D0 48897DE8                    mov     qword[rbp-24], rdi
+   198 000001D4 8975E4                      mov     dword[rbp-28], esi
+   199 000001D7 488B45E8                    mov     rax, qword[rbp-24]
+   200 000001DB 8B55E4                      mov     edx, dword[rbp-28]
+   201 000001DE 8910                        mov     dword[rax], edx
+   202 000001E0 C745FC00000000              mov     dword[rbp-4], 0
+   203 000001E7 EB42                        jmp     .for_cond
+   204                                  .for_loop:
+   205 000001E9 8B45FC                      mov     eax, dword[rbp-4]
+   206 000001EC 4898                        cdqe
+   207 000001EE 4869D0D4000000              imul    rdx, rax, 212
+   208 000001F5 488B45E8                    mov     rax, qword[rbp-24]
+   209 000001F9 4801D0                      add     rax, rdx
+   210 000001FC 4883C004                    add     rax, 4
+   211 00000200 4889C7                      mov     rdi, rax
+   212 00000203 E8F8FDFFFF                  call    RandomEncryption
+   213 00000208 8B45FC                      mov     eax, dword[rbp-4]
+   214 0000020B 4898                        cdqe
+   215 0000020D 4869D0D4000000              imul    rdx, rax, 212
+   216 00000214 488B45E8                    mov     rax, qword[rbp-24]
+   217 00000218 4801D0                      add     rax, rdx
+   218 0000021B 4883C004                    add     rax, 4
+   219 0000021F 4889C7                      mov     rdi, rax
+   220 00000222 E8(00000000)                call    Encrypt
+   221 00000227 8345FC01                    add     dword[rbp-4], 1
+   222                                  .for_cond:
+   223 0000022B 8B45FC                      mov     eax, dword[rbp-4]
+   224 0000022E 3B45E4                      cmp     eax, dword[rbp-28]
+   225 00000231 7CB6                        jl      .for_loop
+   226 00000233 B801000000                  mov     eax, 1
+   227 00000238 C9                          leave
+   228 00000239 C3                          ret

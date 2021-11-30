@@ -1,0 +1,282 @@
+     1                                  extern fscanf
+     2                                  
+     3                                  extern Encrypt
+     4                                  extern CreateEmptyEncryption
+     5                                  
+     6                                  extern DIRECT_ENCRYPTION
+     7                                  extern CYCLE_ENCRYPTION
+     8                                  extern NUMBER_ENCRYPTION
+     9                                  
+    10                                  section .data
+    11 00000000 25317325317300              format1 db "%1s%1s", 0
+    12 00000007 253130307300                format2 db "%100s", 0
+    13 0000000D 256400                      format3 db "%d", 0
+    14                                  
+    15                                  ;----------------------------------------------
+    16                                  ; Ввод параметров прямого(алфавитного) шифрования
+    17                                  ; Encryption *InDirectEncryption(FILE *fin, Encryption *block)
+    18                                  ; {
+    19                                  ;     fscanf(fin, "%1s%1s", &block->encryption_alphabet[0], &block->encryption_alphabet[1]);
+    20                                  ;     fscanf(fin, "%100s", block->text);
+    21                                  ;     return block;
+    22                                  ; }
+    23                                  ;----------------------------------------------
+    24                                  global InDirectEncryption
+    25                                  InDirectEncryption:
+    26                                  section .text
+    27 00000000 55                          push    rbp
+    28 00000001 4889E5                      mov     rbp, rsp
+    29 00000004 4883EC10                    sub     rsp, 16
+    30 00000008 48897DF8                    mov     qword[rbp-8], rdi
+    31 0000000C 488975F0                    mov     qword[rbp-16], rsi
+    32 00000010 488B45F0                    mov     rax, qword[rbp-16]
+    33 00000014 488D4809                    lea     rcx, [rax+9]
+    34 00000018 488B45F0                    mov     rax, qword[rbp-16]
+    35 0000001C 488D5008                    lea     rdx, [rax+8]
+    36 00000020 488B45F8                    mov     rax, qword[rbp-8]
+    37 00000024 48BE-                       mov     rsi, format1
+    37 00000026 [0000000000000000] 
+    38 0000002E 4889C7                      mov     rdi, rax
+    39 00000031 B800000000                  mov     eax, 0
+    40 00000036 E8(00000000)                call    fscanf
+    41 0000003B 488B45F0                    mov     rax, qword[rbp-16]
+    42 0000003F 488D500C                    lea     rdx, [rax+12]
+    43 00000043 488B45F8                    mov     rax, qword[rbp-8]
+    44 00000047 48BE-                       mov     rsi, format2
+    44 00000049 [0700000000000000] 
+    45 00000051 4889C7                      mov     rdi, rax
+    46 00000054 B800000000                  mov     eax, 0
+    47 00000059 E8(00000000)                call    fscanf
+    48 0000005E B801000000                  mov     eax, 1
+    49 00000063 C9                          leave
+    50 00000064 C3                          ret
+    51                                  
+    52                                  ;----------------------------------------------
+    53                                  ; Ввод параметров циклического шифрования
+    54                                  ; Encryption *InCycleEncryption(FILE *fin, Encryption *block)
+    55                                  ; {
+    56                                  ;     fscanf(fin, "%d", &block->shift);
+    57                                  ;     fscanf(fin, "%100s", block->text);
+    58                                  ;     return block;
+    59                                  ; }
+    60                                  ;----------------------------------------------
+    61                                  global InCycleEncryption
+    62                                  InCycleEncryption:
+    63                                  section .text
+    64 00000065 55                          push    rbp
+    65 00000066 4889E5                      mov     rbp, rsp
+    66 00000069 4883EC10                    sub     rsp, 16
+    67 0000006D 48897DF8                    mov     qword[rbp-8], rdi
+    68 00000071 488975F0                    mov     qword[rbp-16], rsi
+    69 00000075 488B45F0                    mov     rax, qword[rbp-16]
+    70 00000079 488D5004                    lea     rdx, [rax+4]
+    71 0000007D 488B45F8                    mov     rax, qword[rbp-8]
+    72 00000081 48BE-                       mov     rsi, format3
+    72 00000083 [0D00000000000000] 
+    73 0000008B 4889C7                      mov     rdi, rax
+    74 0000008E B800000000                  mov     eax, 0
+    75 00000093 E8(00000000)                call    fscanf
+    76 00000098 488B45F0                    mov     rax, qword[rbp-16]
+    77 0000009C 488D500C                    lea     rdx, [rax+12]
+    78 000000A0 488B45F8                    mov     rax, qword[rbp-8]
+    79 000000A4 48BE-                       mov     rsi, format2
+    79 000000A6 [0700000000000000] 
+    80 000000AE 4889C7                      mov     rdi, rax
+    81 000000B1 B800000000                  mov     eax, 0
+    82 000000B6 E8(00000000)                call    fscanf
+    83 000000BB B801000000                  mov     eax, 1
+    84 000000C0 C9                          leave
+    85 000000C1 C3                          ret
+    86                                  
+    87                                  ;----------------------------------------------
+    88                                  ; Ввод параметров численного шифрования
+    89                                  ; Encryption *InNumberEncryption(FILE *fin, Encryption *block)
+    90                                  ; {
+    91                                  ;     fscanf(fin, "%1s%1s", &block->number_alphabet[0], &block->number_alphabet[1]);
+    92                                  ;     fscanf(fin, "%100s", block->text);
+    93                                  ;     return block;
+    94                                  ; }
+    95                                  ;----------------------------------------------
+    96                                  global InNumberEncryption
+    97                                  InNumberEncryption:
+    98                                  section .text
+    99 000000C2 55                          push    rbp
+   100 000000C3 4889E5                      mov     rbp, rsp
+   101 000000C6 4883EC10                    sub     rsp, 16
+   102 000000CA 48897DF8                    mov     qword[rbp-8], rdi
+   103 000000CE 488975F0                    mov     qword[rbp-16], rsi
+   104 000000D2 488B45F0                    mov     rax, qword[rbp-16]
+   105 000000D6 488D480B                    lea     rcx, [rax+11]
+   106 000000DA 488B45F0                    mov     rax, qword[rbp-16]
+   107 000000DE 488D500A                    lea     rdx, [rax+10]
+   108 000000E2 488B45F8                    mov     rax, qword[rbp-8]
+   109 000000E6 48BE-                       mov     rsi, format1
+   109 000000E8 [0000000000000000] 
+   110 000000F0 4889C7                      mov     rdi, rax
+   111 000000F3 B800000000                  mov     eax, 0
+   112 000000F8 E8(00000000)                call    fscanf
+   113 000000FD 488B45F0                    mov     rax, qword[rbp-16]
+   114 00000101 488D500C                    lea     rdx, [rax+12]
+   115 00000105 488B45F8                    mov     rax, qword[rbp-8]
+   116 00000109 48BE-                       mov     rsi, format2
+   116 0000010B [0700000000000000] 
+   117 00000113 4889C7                      mov     rdi, rax
+   118 00000116 B800000000                  mov     eax, 0
+   119 0000011B E8(00000000)                call    fscanf
+   120 00000120 B801000000                  mov     eax, 1
+   121 00000125 C9                          leave
+   122 00000126 C3                          ret
+   123                                  
+   124                                  ;----------------------------------------------
+   125                                  ; Ввод параметров шифрования
+   126                                  ; Encryption *InEncryption(FILE *fin, Encryption *block)
+   127                                  ; {
+   128                                  ;     int mode = 0;
+   129                                  ;     fscanf(fin, "%d", &mode);
+   130                                  ;     block->encryption_type = mode;
+   131                                  ;     switch (mode)
+   132                                  ;     {
+   133                                  ;     case 1:
+   134                                  ;         InDirectEncryption(fin, block);
+   135                                  ;         break;
+   136                                  ;     case 2:
+   137                                  ;         InCycleEncryption(fin, block);
+   138                                  ;         break;
+   139                                  ;     case 3:
+   140                                  ;         InNumberEncryption(fin, block);
+   141                                  ;         break;
+   142                                  ;     }
+   143                                  ;     return block;
+   144                                  ; }
+   145                                  ;----------------------------------------------
+   146                                  global InEncryption
+   147                                  InEncryption:
+   148                                  section .text
+   149 00000127 55                          push rbp
+   150 00000128 4889E5                      mov rbp, rsp
+   151 0000012B 4883EC20                    sub rsp, 32
+   152 0000012F 48897DE8                    mov qword[rbp-24], rdi
+   153 00000133 488975E0                    mov qword[rbp-32], rsi
+   154 00000137 C745FC00000000              mov dword[rbp-4], 0
+   155 0000013E 488D55FC                    lea rdx, [rbp-4]
+   156 00000142 488B45E8                    mov rax, qword[rbp-24]
+   157 00000146 48BE-                       mov rsi, format3
+   157 00000148 [0D00000000000000] 
+   158 00000150 4889C7                      mov rdi, rax
+   159 00000153 B800000000                  mov eax, 0
+   160 00000158 E8(00000000)                call fscanf
+   161 0000015D 8B55FC                      mov edx, dword[rbp-4]
+   162 00000160 488B45E0                    mov rax, qword[rbp-32]
+   163 00000164 8910                        mov dword[rax], edx
+   164 00000166 8B45FC                      mov eax, dword[rbp-4]
+   165 00000169 8B1425[00000000]            mov edx, dword[NUMBER_ENCRYPTION]
+   166 00000170 39D0                        cmp eax, edx
+   167 00000172 744D                        je .switch3
+   168 00000174 8B1425[00000000]            mov edx, dword[NUMBER_ENCRYPTION]
+   169 0000017B 39D0                        cmp eax, edx
+   170 0000017D 7F55                        jg .return
+   171 0000017F 8B1425[00000000]            mov edx, dword[DIRECT_ENCRYPTION]
+   172 00000186 39D0                        cmp eax, edx
+   173 00000188 740D                        je .switch1
+   174 0000018A 8B1425[00000000]            mov edx, dword[CYCLE_ENCRYPTION]
+   175 00000191 39D0                        cmp eax, edx
+   176 00000193 7417                        je .switch2
+   177 00000195 EB3D                        jmp .return
+   178                                  .switch1:
+   179 00000197 488B55E0                    mov rdx, qword[rbp-32]
+   180 0000019B 488B45E8                    mov rax, qword[rbp-24]
+   181 0000019F 4889D6                      mov rsi, rdx
+   182 000001A2 4889C7                      mov rdi, rax
+   183 000001A5 E8(10000000)                call InDirectEncryption
+   184 000001AA EB28                        jmp .return
+   185                                  .switch2:
+   186 000001AC 488B55E0                    mov rdx, qword[rbp-32]
+   187 000001B0 488B45E8                    mov rax, qword[rbp-24]
+   188 000001B4 4889D6                      mov rsi, rdx
+   189 000001B7 4889C7                      mov rdi, rax
+   190 000001BA E8A6FEFFFF                  call InCycleEncryption
+   191 000001BF EB13                        jmp .return
+   192                                  .switch3:
+   193 000001C1 488B55E0                    mov rdx, qword[rbp-32]
+   194 000001C5 488B45E8                    mov rax, qword[rbp-24]
+   195 000001C9 4889D6                      mov rsi, rdx
+   196 000001CC 4889C7                      mov rdi, rax
+   197 000001CF E8EEFEFFFF                  call InNumberEncryption
+   198                                  .return:
+   199 000001D4 B801000000                  mov eax, 1
+   200 000001D9 C9                          leave
+   201 000001DA C3                          ret
+   202                                  
+   203                                  ;----------------------------------------------
+   204                                  ; Ввод содержимого контейнера из файла
+   205                                  ; Container *InContainer(FILE *fin)
+   206                                  ; {
+   207                                  ;     int n = 0;
+   208                                  ;     fscanf(fin, "%d", &n);
+   209                                  ;     x->size = n;
+   210                                  ;     for (int i = 0; i < x->size; ++i)
+   211                                  ;     {
+   212                                  ;         create_empty_encryption(&x->encryptions[i]);
+   213                                  ;         InEncryption(fin, &x->encryptions[i]);
+   214                                  ;         Encrypt(&x->encryptions[i]);
+   215                                  ;     }
+   216                                  ;     return x;
+   217                                  ; }
+   218                                  ;----------------------------------------------
+   219                                  global InContainer
+   220                                  InContainer:
+   221                                  section .text
+   222 000001DB 55                          push rbp
+   223 000001DC 4889E5                      mov rbp, rsp
+   224 000001DF 4883EC20                    sub rsp, 32
+   225 000001E3 48897DE8                    mov qword[rbp-24], rdi
+   226 000001E7 488975E0                    mov qword[rbp-32], rsi
+   227 000001EB C745F800000000              mov dword[rbp-8], 0
+   228 000001F2 488D55F8                    lea rdx, [rbp-8]
+   229 000001F6 488B45E8                    mov rax, qword[rbp-24]
+   230 000001FA 48BE-                       mov rsi, format3
+   230 000001FC [0D00000000000000] 
+   231 00000204 4889C7                      mov rdi, rax
+   232 00000207 B800000000                  mov eax, 0
+   233 0000020C E8(00000000)                call fscanf
+   234 00000211 8B55F8                      mov edx, dword[rbp-8]
+   235 00000214 488B45E0                    mov rax, qword[rbp-32]
+   236 00000218 8910                        mov dword[rax], edx
+   237 0000021A C745FC00000000              mov dword[rbp-4], 0
+   238 00000221 EB68                        jmp .for_cond
+   239                                  .for_loop:
+   240 00000223 8B45FC                      mov eax, dword[rbp-4]
+   241 00000226 4898                        cdqe
+   242 00000228 4869D0D4000000              imul rdx, rax, 212
+   243 0000022F 488B45E0                    mov rax, qword[rbp-32]
+   244 00000233 4801D0                      add rax, rdx
+   245 00000236 4883C004                    add rax, 4
+   246 0000023A 4889C7                      mov rdi, rax
+   247 0000023D E8(00000000)                call CreateEmptyEncryption
+   248 00000242 8B45FC                      mov eax, dword[rbp-4]
+   249 00000245 4898                        cdqe
+   250 00000247 4869D0D4000000              imul rdx, rax, 212
+   251 0000024E 488B45E0                    mov rax, qword[rbp-32]
+   252 00000252 4801D0                      add rax, rdx
+   253 00000255 488D5004                    lea rdx, [rax+4]
+   254 00000259 488B45E8                    mov rax, qword[rbp-24]
+   255 0000025D 4889D6                      mov rsi, rdx
+   256 00000260 4889C7                      mov rdi, rax
+   257 00000263 E8BFFEFFFF                  call InEncryption
+   258 00000268 8B45FC                      mov eax, dword[rbp-4]
+   259 0000026B 4898                        cdqe
+   260 0000026D 4869D0D4000000              imul rdx, rax, 212
+   261 00000274 488B45E0                    mov rax, qword[rbp-32]
+   262 00000278 4801D0                      add rax, rdx
+   263 0000027B 4883C004                    add rax, 4
+   264 0000027F 4889C7                      mov rdi, rax
+   265 00000282 E8(00000000)                call Encrypt
+   266 00000287 8345FC01                    add dword[rbp-4], 1
+   267                                  .for_cond:
+   268 0000028B 488B45E0                    mov rax, qword[rbp-32]
+   269 0000028F 8B00                        mov eax, dword[rax]
+   270 00000291 3945FC                      cmp dword[rbp-4], eax
+   271 00000294 7C8D                        jl .for_loop
+   272 00000296 B801000000                  mov eax, 1
+   273 0000029B C9                          leave
+   274 0000029C C3                          ret

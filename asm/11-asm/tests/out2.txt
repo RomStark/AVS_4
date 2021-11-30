@@ -1,0 +1,8 @@
+Filled Container:
+character encryption: text = combination | encrypted text = combinvtion | symbols = ['a' -> 'v'] | func result = 97.583333
+cycle encryption: text = fortune | encrypted text = unefort | n = 4 | func result = 96.375000
+number encryption: text = accident | encrypted text = acci6ent | symbols = ['d' -> '6'] | func result = 91.888889
+Sorted Container:
+number encryption: text = accident | encrypted text = acci6ent | symbols = ['d' -> '6'] | func result = 91.888889
+cycle encryption: text = fortune | encrypted text = unefort | n = 4 | func result = 96.375000
+character encryption: text = combination | encrypted text = combinvtion | symbols = ['a' -> 'v'] | func result = 97.583333

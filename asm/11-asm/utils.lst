@@ -1,0 +1,597 @@
+     1                                  extern strlen
+     2                                  
+     3                                  extern func
+     4                                  
+     5                                  extern DIRECT_ENCRYPTION
+     6                                  extern CYCLE_ENCRYPTION
+     7                                  extern NUMBER_ENCRYPTION
+     8                                  
+     9                                  ;----------------------------------------------
+    10                                  ; Создание пустого объекта шифрования
+    11                                  ; bool CreateEmptyEncryption(Encryption *block)
+    12                                  ; {
+    13                                  ;     block->encryption_type = 0;
+    14                                  ;     for (int i = 0; i < 100; ++i)
+    15                                  ;     {
+    16                                  ;         block->text[i] = 0;
+    17                                  ;         block->encrypted_text[i] = 0;
+    18                                  ;     }
+    19                                  ;     for (int i = 0; i < 2; ++i)
+    20                                  ;     {
+    21                                  ;         block->encryption_alphabet[i] = -1;
+    22                                  ;         block->number_alphabet[i] = -1;
+    23                                  ;     }
+    24                                  ;     return true;
+    25                                  ; }
+    26                                  ;----------------------------------------------
+    27                                  global CreateEmptyEncryption
+    28                                  CreateEmptyEncryption:
+    29                                  section .text
+    30 00000000 55                          push    rbp
+    31 00000001 4889E5                      mov     rbp, rsp
+    32 00000004 48897DE8                    mov     qword[rbp-24], rdi
+    33 00000008 488B45E8                    mov     rax, qword[rbp-24]
+    34 0000000C C70000000000                mov     dword[rax], 0
+    35 00000012 C745FC00000000              mov     dword[rbp-4], 0
+    36 00000019 EB20                        jmp     .for_cond1
+    37                                  .for_loop1:
+    38 0000001B 488B55E8                    mov     rdx, qword[rbp-24]
+    39 0000001F 8B45FC                      mov     eax, dword[rbp-4]
+    40 00000022 4898                        cdqe
+    41 00000024 C644020C00                  mov     byte[rdx+12+rax], 0
+    42 00000029 488B55E8                    mov     rdx, qword[rbp-24]
+    43 0000002D 8B45FC                      mov     eax, dword[rbp-4]
+    44 00000030 4898                        cdqe
+    45 00000032 C644027000                  mov     byte[rdx+112+rax], 0
+    46 00000037 8345FC01                    add     dword[rbp-4], 1
+    47                                  .for_cond1:
+    48 0000003B 837DFC63                    cmp     dword[rbp-4], 99
+    49 0000003F 7EDA                        jle     .for_loop1
+    50 00000041 C745F800000000              mov     dword[rbp-8], 0
+    51 00000048 EB20                        jmp     .for_cond2
+    52                                  .for_loop2:
+    53 0000004A 488B55E8                    mov     rdx, qword[rbp-24]
+    54 0000004E 8B45F8                      mov     eax, dword[rbp-8]
+    55 00000051 4898                        cdqe
+    56 00000053 C6440208FF                  mov     byte[rdx+8+rax], -1
+    57 00000058 488B55E8                    mov     rdx, qword[rbp-24]
+    58 0000005C 8B45F8                      mov     eax, dword[rbp-8]
+    59 0000005F 4898                        cdqe
+    60 00000061 C644020AFF                  mov     byte[rdx+10+rax], -1
+    61 00000066 8345F801                    add     dword[rbp-8], 1
+    62                                  .for_cond2:
+    63 0000006A 837DF801                    cmp     dword[rbp-8], 1
+    64 0000006E 7EDA                        jle     .for_loop2
+    65 00000070 B801000000                  mov     eax, 1
+    66 00000075 5D                          pop     rbp
+    67 00000076 C3                          ret
+    68                                  
+    69                                  ;----------------------------------------------
+    70                                  ; Создание зашифрованного текста прямым(алфавитным) шифрованием
+    71                                  ; bool DirectEncrypt(Encryption *block)
+    72                                  ; {
+    73                                  ;     int len = strlen(block->text);
+    74                                  ;     for (int i = 0; i < len; ++i)
+    75                                  ;     {
+    76                                  ;         if (block->text[i] == block->encryption_alphabet[0])
+    77                                  ;         {
+    78                                  ;             block->encrypted_text[i] = block->encryption_alphabet[1];
+    79                                  ;         }
+    80                                  ;         else
+    81                                  ;         {
+    82                                  ;             block->encrypted_text[i] = block->text[i];
+    83                                  ;         }
+    84                                  ;     }
+    85                                  ;     return true;
+    86                                  ; }
+    87                                  ;----------------------------------------------
+    88                                  global DirectEncrypt
+    89                                  DirectEncrypt:
+    90                                  section .text
+    91 00000077 55                          push    rbp
+    92 00000078 4889E5                      mov     rbp, rsp
+    93 0000007B 4883EC20                    sub     rsp, 32
+    94 0000007F 48897DE8                    mov     qword[rbp-24], rdi
+    95 00000083 488B45E8                    mov     rax, qword[rbp-24]
+    96 00000087 4883C00C                    add     rax, 12
+    97 0000008B 4889C7                      mov     rdi, rax
+    98 0000008E E8(00000000)                call    strlen
+    99 00000093 8945F8                      mov     dword[rbp-8], eax
+   100 00000096 C745FC00000000              mov     dword[rbp-4], 0
+   101 0000009D EB50                        jmp     .for_cond
+   102                                  .for_loop:
+   103 0000009F 488B55E8                    mov     rdx, qword[rbp-24]
+   104 000000A3 8B45FC                      mov     eax, dword[rbp-4]
+   105 000000A6 4898                        cdqe
+   106 000000A8 0FB654020C                  movzx   edx, byte[rdx+12+rax]
+   107 000000AD 488B45E8                    mov     rax, qword[rbp-24]
+   108 000000B1 0FB64008                    movzx   eax, byte[rax+8]
+   109 000000B5 38C2                        cmp     dl, al
+   110 000000B7 7517                        jne     .else
+   111 000000B9 488B45E8                    mov     rax, qword[rbp-24]
+   112 000000BD 0FB64809                    movzx   ecx, byte[rax+9]
+   113 000000C1 488B55E8                    mov     rdx, qword[rbp-24]
+   114 000000C5 8B45FC                      mov     eax, dword[rbp-4]
+   115 000000C8 4898                        cdqe
+   116 000000CA 884C0270                    mov     byte[rdx+112+rax], cl
+   117 000000CE EB1B                        jmp     .loop_end
+   118                                  .else:
+   119 000000D0 488B55E8                    mov     rdx, qword[rbp-24]
+   120 000000D4 8B45FC                      mov     eax, dword[rbp-4]
+   121 000000D7 4898                        cdqe
+   122 000000D9 0FB64C020C                  movzx   ecx, byte[rdx+12+rax]
+   123 000000DE 488B55E8                    mov     rdx, qword[rbp-24]
+   124 000000E2 8B45FC                      mov     eax, dword[rbp-4]
+   125 000000E5 4898                        cdqe
+   126 000000E7 884C0270                    mov     byte[rdx+112+rax], cl
+   127                                  .loop_end:
+   128 000000EB 8345FC01                    add     dword[rbp-4], 1
+   129                                  .for_cond:
+   130 000000EF 8B45FC                      mov     eax, dword[rbp-4]
+   131 000000F2 3B45F8                      cmp     eax, dword[rbp-8]
+   132 000000F5 7CA8                        jl      .for_loop
+   133 000000F7 B801000000                  mov     eax, 1
+   134 000000FC C9                          leave
+   135 000000FD C3                          ret
+   136                                  
+   137                                  ;----------------------------------------------
+   138                                  ; Создание зашифрованного текста циклическим шифрованием
+   139                                  ; bool CycleEncrypt(Encryption *block)
+   140                                  ; {
+   141                                  ;     int len = strlen(block->text);
+   142                                  ;     int n = block->shift % len;
+   143                                  ;     for (int i = 0; i < len; ++i)
+   144                                  ;     {
+   145                                  ;         block->encrypted_text[i] = block->text[(i + n) % len];
+   146                                  ;     }
+   147                                  ;     return true;
+   148                                  ; }
+   149                                  ;----------------------------------------------
+   150                                  global CycleEncrypt
+   151                                  CycleEncrypt:
+   152                                  section .text
+   153 000000FE 55                          push    rbp
+   154 000000FF 4889E5                      mov     rbp, rsp
+   155 00000102 4883EC20                    sub     rsp, 32
+   156 00000106 48897DE8                    mov     qword[rbp-24], rdi
+   157 0000010A 488B45E8                    mov     rax, qword[rbp-24]
+   158 0000010E 4883C00C                    add     rax, 12
+   159 00000112 4889C7                      mov     rdi, rax
+   160 00000115 E8(00000000)                call    strlen
+   161 0000011A 8945F8                      mov     dword[rbp-8], eax
+   162 0000011D 488B45E8                    mov     rax, qword[rbp-24]
+   163 00000121 8B4004                      mov     eax, dword[rax+4]
+   164 00000124 99                          cdq
+   165 00000125 F77DF8                      idiv    dword[rbp-8]
+   166 00000128 8955F4                      mov     dword[rbp-12], edx
+   167 0000012B C745FC00000000              mov     dword[rbp-4], 0
+   168 00000132 EB2A                        jmp     .for_cond
+   169                                  .for_loop:
+   170 00000134 8B55FC                      mov     edx, dword[rbp-4]
+   171 00000137 8B45F4                      mov     eax, dword[rbp-12]
+   172 0000013A 01D0                        add     eax, edx
+   173 0000013C 99                          cdq
+   174 0000013D F77DF8                      idiv    dword[rbp-8]
+   175 00000140 89D0                        mov     eax, edx
+   176 00000142 488B55E8                    mov     rdx, qword[rbp-24]
+   177 00000146 4898                        cdqe
+   178 00000148 0FB64C020C                  movzx   ecx, byte[rdx+12+rax]
+   179 0000014D 488B55E8                    mov     rdx, qword[rbp-24]
+   180 00000151 8B45FC                      mov     eax, dword[rbp-4]
+   181 00000154 4898                        cdqe
+   182 00000156 884C0270                    mov     byte[rdx+112+rax], cl
+   183 0000015A 8345FC01                    add     dword[rbp-4], 1
+   184                                  .for_cond:
+   185 0000015E 8B45FC                      mov     eax, dword[rbp-4]
+   186 00000161 3B45F8                      cmp     eax, dword[rbp-8]
+   187 00000164 7CCE                        jl      .for_loop
+   188 00000166 B801000000                  mov     eax, 1
+   189 0000016B C9                          leave
+   190 0000016C C3                          ret
+   191                                  
+   192                                  ;----------------------------------------------
+   193                                  ; Создание зашифрованного текста численным шифрованием
+   194                                  ; bool NumberEncrypt(Encryption *block)
+   195                                  ; {
+   196                                  ;     int len = strlen(block->text);
+   197                                  ;     for (int i = 0; i < len; ++i)
+   198                                  ;     {
+   199                                  ;         if (block->text[i] == block->number_alphabet[0])
+   200                                  ;         {
+   201                                  ;             block->encrypted_text[i] = block->number_alphabet[1];
+   202                                  ;         }
+   203                                  ;         else
+   204                                  ;         {
+   205                                  ;             block->encrypted_text[i] = block->text[i];
+   206                                  ;         }
+   207                                  ;     }
+   208                                  ;     return true;
+   209                                  ; }
+   210                                  ;----------------------------------------------
+   211                                  global NumberEncrypt
+   212                                  NumberEncrypt:
+   213                                  section .text
+   214 0000016D 55                          push    rbp
+   215 0000016E 4889E5                      mov     rbp, rsp
+   216 00000171 4883EC20                    sub     rsp, 32
+   217 00000175 48897DE8                    mov     qword[rbp-24], rdi
+   218 00000179 488B45E8                    mov     rax, qword[rbp-24]
+   219 0000017D 4883C00C                    add     rax, 12
+   220 00000181 4889C7                      mov     rdi, rax
+   221 00000184 E8(00000000)                call    strlen
+   222 00000189 8945F8                      mov     dword[rbp-8], eax
+   223 0000018C C745FC00000000              mov     dword[rbp-4], 0
+   224 00000193 EB50                        jmp     .for_cond
+   225                                  .for_loop:
+   226 00000195 488B55E8                    mov     rdx, qword[rbp-24]
+   227 00000199 8B45FC                      mov     eax, dword[rbp-4]
+   228 0000019C 4898                        cdqe
+   229 0000019E 0FB654020C                  movzx   edx, byte[rdx+12+rax]
+   230 000001A3 488B45E8                    mov     rax, qword[rbp-24]
+   231 000001A7 0FB6400A                    movzx   eax, byte[rax+10]
+   232 000001AB 38C2                        cmp     dl, al
+   233 000001AD 7517                        jne     .else
+   234 000001AF 488B45E8                    mov     rax, qword[rbp-24]
+   235 000001B3 0FB6480B                    movzx   ecx, byte[rax+11]
+   236 000001B7 488B55E8                    mov     rdx, qword[rbp-24]
+   237 000001BB 8B45FC                      mov     eax, dword[rbp-4]
+   238 000001BE 4898                        cdqe
+   239 000001C0 884C0270                    mov     byte[rdx+112+rax], cl
+   240 000001C4 EB1B                        jmp     .loop_end
+   241                                  .else:
+   242 000001C6 488B55E8                    mov     rdx, qword[rbp-24]
+   243 000001CA 8B45FC                      mov     eax, dword[rbp-4]
+   244 000001CD 4898                        cdqe
+   245 000001CF 0FB64C020C                  movzx   ecx, byte[rdx+12+rax]
+   246 000001D4 488B55E8                    mov     rdx, qword[rbp-24]
+   247 000001D8 8B45FC                      mov     eax, dword[rbp-4]
+   248 000001DB 4898                        cdqe
+   249 000001DD 884C0270                    mov     byte[rdx+112+rax], cl
+   250                                  .loop_end:
+   251 000001E1 8345FC01                    add     dword[rbp-4], 1
+   252                                  .for_cond:
+   253 000001E5 8B45FC                      mov     eax, dword[rbp-4]
+   254 000001E8 3B45F8                      cmp     eax, dword[rbp-8]
+   255 000001EB 7CA8                        jl      .for_loop
+   256 000001ED B801000000                  mov     eax, 1
+   257 000001F2 C9                          leave
+   258 000001F3 C3                          ret
+   259                                  
+   260                                  ;----------------------------------------------
+   261                                  ; Создание зашифрованного текста заданным методом
+   262                                  ; bool Encrypt(Encryption *block)
+   263                                  ; {
+   264                                  ;     switch (block->encryption_type)
+   265                                  ;     {
+   266                                  ;     case 1:
+   267                                  ;         DirectEncrypt(block);
+   268                                  ;         break;
+   269                                  ;     case 2:
+   270                                  ;         CycleEncrypt(block);
+   271                                  ;         break;
+   272                                  ;     case 3:
+   273                                  ;         NumberEncrypt(block);
+   274                                  ;         break;
+   275                                  ;     }
+   276                                  ;     return true;
+   277                                  ; }
+   278                                  ;----------------------------------------------
+   279                                  global Encrypt
+   280                                  Encrypt:
+   281                                  section .text
+   282 000001F4 55                          push rbp
+   283 000001F5 4889E5                      mov rbp, rsp
+   284 000001F8 4883EC10                    sub rsp, 16
+   285 000001FC 48897DF8                    mov qword[rbp-8], rdi
+   286 00000200 488B45F8                    mov rax, qword[rbp-8]
+   287 00000204 8B00                        mov eax, dword[rax]
+   288 00000206 8B3C25[00000000]            mov edi, dword[NUMBER_ENCRYPTION]
+   289 0000020D 39F8                        cmp eax, edi
+   290 0000020F 743F                        je .switch3
+   291 00000211 8B3C25[00000000]            mov edi, dword[NUMBER_ENCRYPTION]
+   292 00000218 39F8                        cmp eax, edi
+   293 0000021A 7F40                        jg .return
+   294 0000021C 8B3C25[00000000]            mov edi, dword[DIRECT_ENCRYPTION]
+   295 00000223 39F8                        cmp eax, edi
+   296 00000225 740D                        je .switch1
+   297 00000227 8B3C25[00000000]            mov edi, dword[CYCLE_ENCRYPTION]
+   298 0000022E 39F8                        cmp eax, edi
+   299 00000230 7410                        je .switch2
+   300 00000232 EB28                        jmp .return
+   301                                  .switch1:
+   302 00000234 488B45F8                    mov rax, qword[rbp-8]
+   303 00000238 4889C7                      mov rdi, rax
+   304 0000023B E837FEFFFF                  call DirectEncrypt
+   305 00000240 EB1A                        jmp .return
+   306                                  .switch2:
+   307 00000242 488B45F8                    mov rax, qword[rbp-8]
+   308 00000246 4889C7                      mov rdi, rax
+   309 00000249 E8B0FEFFFF                  call CycleEncrypt
+   310 0000024E EB0C                        jmp .return
+   311                                  .switch3:
+   312 00000250 488B45F8                    mov rax, qword[rbp-8]
+   313 00000254 4889C7                      mov rdi, rax
+   314 00000257 E811FFFFFF                  call NumberEncrypt
+   315                                  .return:
+   316 0000025C B801000000                  mov eax, 1
+   317 00000261 C9                          leave
+   318 00000262 C3                          ret
+   319                                  
+   320                                  ;----------------------------------------------
+   321                                  ; Сортировка контейнера с помощью сортировки Шелла
+   322                                  ; bool SortContainer(Container *cont)
+   323                                  ; {
+   324                                  ;     for (int s = cont->size / 2; s > 0; s /= 2)
+   325                                  ;     {
+   326                                  ;         for (int i = s; i < cont->size; ++i)
+   327                                  ;         {
+   328                                  ;             for (int j = i - s; j >= 0 && func(cont->encryptions[j].text) > func(cont->encryptions[j + s].text); j -= s)
+   329                                  ;             {
+   330                                  ;                 Encryption temp = cont->encryptions[j];
+   331                                  ;                 cont->encryptions[j] = cont->encryptions[j + s];
+   332                                  ;                 cont->encryptions[j + s] = temp;
+   333                                  ;             }
+   334                                  ;         }
+   335                                  ;     }
+   336                                  ;     return true;
+   337                                  ; }
+   338                                  ;----------------------------------------------
+   339                                  global SortContainer
+   340                                  SortContainer:
+   341                                  section .text
+   342 00000263 55                          push    rbp
+   343 00000264 4889E5                      mov     rbp, rsp
+   344 00000267 53                          push    rbx
+   345 00000268 4881ECF8000000              sub     rsp, 248
+   346 0000026F 4889BD08FFFFFF              mov     qword[rbp-248], rdi
+   347 00000276 488B8508FFFFFF              mov     rax, qword[rbp-248]
+   348 0000027D 8B00                        mov     eax, dword[rax]
+   349 0000027F 89C2                        mov     edx, eax
+   350 00000281 C1EA1F                      shr     edx, 31
+   351 00000284 01D0                        add     eax, edx
+   352 00000286 D1F8                        sar     eax, 1
+   353 00000288 8945EC                      mov     dword[rbp-20], eax
+   354 0000028B E964040000                  jmp     .for_cond1
+   355                                  .for_loop1:
+   356 00000290 8B45EC                      mov     eax, dword[rbp-20]
+   357 00000293 8945E8                      mov     dword[rbp-24], eax
+   358 00000296 E938040000                  jmp     .for_cond2
+   359                                  .for_loop2:
+   360 0000029B 8B45E8                      mov     eax, dword[rbp-24]
+   361 0000029E 2B45EC                      sub     eax, dword[rbp-20]
+   362 000002A1 8945E4                      mov     dword[rbp-28], eax
+   363 000002A4 E9C3030000                  jmp     .for_cond3
+   364                                  .for_loop3:
+   365 000002A9 488B9508FFFFFF              mov     rdx, qword[rbp-248]
+   366 000002B0 8B45E4                      mov     eax, dword[rbp-28]
+   367 000002B3 4898                        cdqe
+   368 000002B5 4869C0D4000000              imul    rax, rax, 212
+   369 000002BC 4801D0                      add     rax, rdx
+   370 000002BF 488B4804                    mov     rcx, qword[rax+4]
+   371 000002C3 488B580C                    mov     rbx, qword[rax+12]
+   372 000002C7 48898D10FFFFFF              mov     qword[rbp-240], rcx
+   373 000002CE 48899D18FFFFFF              mov     qword[rbp-232], rbx
+   374 000002D5 488B4814                    mov     rcx, qword[rax+20]
+   375 000002D9 488B581C                    mov     rbx, qword[rax+28]
+   376 000002DD 48898D20FFFFFF              mov     qword[rbp-224], rcx
+   377 000002E4 48899D28FFFFFF              mov     qword[rbp-216], rbx
+   378 000002EB 488B4824                    mov     rcx, qword[rax+36]
+   379 000002EF 488B582C                    mov     rbx, qword[rax+44]
+   380 000002F3 48898D30FFFFFF              mov     qword[rbp-208], rcx
+   381 000002FA 48899D38FFFFFF              mov     qword[rbp-200], rbx
+   382 00000301 488B4834                    mov     rcx, qword[rax+52]
+   383 00000305 488B583C                    mov     rbx, qword[rax+60]
+   384 00000309 48898D40FFFFFF              mov     qword[rbp-192], rcx
+   385 00000310 48899D48FFFFFF              mov     qword[rbp-184], rbx
+   386 00000317 488B4844                    mov     rcx, qword[rax+68]
+   387 0000031B 488B584C                    mov     rbx, qword[rax+76]
+   388 0000031F 48898D50FFFFFF              mov     qword[rbp-176], rcx
+   389 00000326 48899D58FFFFFF              mov     qword[rbp-168], rbx
+   390 0000032D 488B4854                    mov     rcx, qword[rax+84]
+   391 00000331 488B585C                    mov     rbx, qword[rax+92]
+   392 00000335 48898D60FFFFFF              mov     qword[rbp-160], rcx
+   393 0000033C 48899D68FFFFFF              mov     qword[rbp-152], rbx
+   394 00000343 488B4864                    mov     rcx, qword[rax+100]
+   395 00000347 488B586C                    mov     rbx, qword[rax+108]
+   396 0000034B 48898D70FFFFFF              mov     qword[rbp-144], rcx
+   397 00000352 48899D78FFFFFF              mov     qword[rbp-136], rbx
+   398 00000359 488B4874                    mov     rcx, qword[rax+116]
+   399 0000035D 488B587C                    mov     rbx, qword[rax+124]
+   400 00000361 48894D80                    mov     qword[rbp-128], rcx
+   401 00000365 48895D88                    mov     qword[rbp-120], rbx
+   402 00000369 488B8884000000              mov     rcx, qword[rax+132]
+   403 00000370 488B988C000000              mov     rbx, qword[rax+140]
+   404 00000377 48894D90                    mov     qword[rbp-112], rcx
+   405 0000037B 48895D98                    mov     qword[rbp-104], rbx
+   406 0000037F 488B8894000000              mov     rcx, qword[rax+148]
+   407 00000386 488B989C000000              mov     rbx, qword[rax+156]
+   408 0000038D 48894DA0                    mov     qword[rbp-96], rcx
+   409 00000391 48895DA8                    mov     qword[rbp-88], rbx
+   410 00000395 488B88A4000000              mov     rcx, qword[rax+164]
+   411 0000039C 488B98AC000000              mov     rbx, qword[rax+172]
+   412 000003A3 48894DB0                    mov     qword[rbp-80], rcx
+   413 000003A7 48895DB8                    mov     qword[rbp-72], rbx
+   414 000003AB 488B88B4000000              mov     rcx, qword[rax+180]
+   415 000003B2 488B98BC000000              mov     rbx, qword[rax+188]
+   416 000003B9 48894DC0                    mov     qword[rbp-64], rcx
+   417 000003BD 48895DC8                    mov     qword[rbp-56], rbx
+   418 000003C1 488B88C4000000              mov     rcx, qword[rax+196]
+   419 000003C8 488B98CC000000              mov     rbx, qword[rax+204]
+   420 000003CF 48894DD0                    mov     qword[rbp-48], rcx
+   421 000003D3 48895DD8                    mov     qword[rbp-40], rbx
+   422 000003D7 8B80D4000000                mov     eax, dword[rax+212]
+   423 000003DD 8945E0                      mov     dword[rbp-32], eax
+   424 000003E0 8B55E4                      mov     edx, dword[rbp-28]
+   425 000003E3 8B45EC                      mov     eax, dword[rbp-20]
+   426 000003E6 01C2                        add     edx, eax
+   427 000003E8 488B8D08FFFFFF              mov     rcx, qword[rbp-248]
+   428 000003EF 8B45E4                      mov     eax, dword[rbp-28]
+   429 000003F2 4898                        cdqe
+   430 000003F4 4869C0D4000000              imul    rax, rax, 212
+   431 000003FB 4801C8                      add     rax, rcx
+   432 000003FE 488B8D08FFFFFF              mov     rcx, qword[rbp-248]
+   433 00000405 4863D2                      movsx   rdx, edx
+   434 00000408 4869D2D4000000              imul    rdx, rdx, 212
+   435 0000040F 4801CA                      add     rdx, rcx
+   436 00000412 488B4A04                    mov     rcx, qword[rdx+4]
+   437 00000416 488B5A0C                    mov     rbx, qword[rdx+12]
+   438 0000041A 48894804                    mov     qword[rax+4], rcx
+   439 0000041E 4889580C                    mov     qword[rax+12], rbx
+   440 00000422 488B4A14                    mov     rcx, qword[rdx+20]
+   441 00000426 488B5A1C                    mov     rbx, qword[rdx+28]
+   442 0000042A 48894814                    mov     qword[rax+20], rcx
+   443 0000042E 4889581C                    mov     qword[rax+28], rbx
+   444 00000432 488B4A24                    mov     rcx, qword[rdx+36]
+   445 00000436 488B5A2C                    mov     rbx, qword[rdx+44]
+   446 0000043A 48894824                    mov     qword[rax+36], rcx
+   447 0000043E 4889582C                    mov     qword[rax+44], rbx
+   448 00000442 488B4A34                    mov     rcx, qword[rdx+52]
+   449 00000446 488B5A3C                    mov     rbx, qword[rdx+60]
+   450 0000044A 48894834                    mov     qword[rax+52], rcx
+   451 0000044E 4889583C                    mov     qword[rax+60], rbx
+   452 00000452 488B4A44                    mov     rcx, qword[rdx+68]
+   453 00000456 488B5A4C                    mov     rbx, qword[rdx+76]
+   454 0000045A 48894844                    mov     qword[rax+68], rcx
+   455 0000045E 4889584C                    mov     qword[rax+76], rbx
+   456 00000462 488B4A54                    mov     rcx, qword[rdx+84]
+   457 00000466 488B5A5C                    mov     rbx, qword[rdx+92]
+   458 0000046A 48894854                    mov     qword[rax+84], rcx
+   459 0000046E 4889585C                    mov     qword[rax+92], rbx
+   460 00000472 488B4A64                    mov     rcx, qword[rdx+100]
+   461 00000476 488B5A6C                    mov     rbx, qword[rdx+108]
+   462 0000047A 48894864                    mov     qword[rax+100], rcx
+   463 0000047E 4889586C                    mov     qword[rax+108], rbx
+   464 00000482 488B4A74                    mov     rcx, qword[rdx+116]
+   465 00000486 488B5A7C                    mov     rbx, qword[rdx+124]
+   466 0000048A 48894874                    mov     qword[rax+116], rcx
+   467 0000048E 4889587C                    mov     qword[rax+124], rbx
+   468 00000492 488B8A84000000              mov     rcx, qword[rdx+132]
+   469 00000499 488B9A8C000000              mov     rbx, qword[rdx+140]
+   470 000004A0 48898884000000              mov     qword[rax+132], rcx
+   471 000004A7 4889988C000000              mov     qword[rax+140], rbx
+   472 000004AE 488B8A94000000              mov     rcx, qword[rdx+148]
+   473 000004B5 488B9A9C000000              mov     rbx, qword[rdx+156]
+   474 000004BC 48898894000000              mov     qword[rax+148], rcx
+   475 000004C3 4889989C000000              mov     qword[rax+156], rbx
+   476 000004CA 488B8AA4000000              mov     rcx, qword[rdx+164]
+   477 000004D1 488B9AAC000000              mov     rbx, qword[rdx+172]
+   478 000004D8 488988A4000000              mov     qword[rax+164], rcx
+   479 000004DF 488998AC000000              mov     qword[rax+172], rbx
+   480 000004E6 488B8AB4000000              mov     rcx, qword[rdx+180]
+   481 000004ED 488B9ABC000000              mov     rbx, qword[rdx+188]
+   482 000004F4 488988B4000000              mov     qword[rax+180], rcx
+   483 000004FB 488998BC000000              mov     qword[rax+188], rbx
+   484 00000502 488B8AC4000000              mov     rcx, qword[rdx+196]
+   485 00000509 488B9ACC000000              mov     rbx, qword[rdx+204]
+   486 00000510 488988C4000000              mov     qword[rax+196], rcx
+   487 00000517 488998CC000000              mov     qword[rax+204], rbx
+   488 0000051E 8B92D4000000                mov     edx, dword[rdx+212]
+   489 00000524 8990D4000000                mov     dword[rax+212], edx
+   490 0000052A 8B55E4                      mov     edx, dword[rbp-28]
+   491 0000052D 8B45EC                      mov     eax, dword[rbp-20]
+   492 00000530 01D0                        add     eax, edx
+   493 00000532 488B9508FFFFFF              mov     rdx, qword[rbp-248]
+   494 00000539 4898                        cdqe
+   495 0000053B 4869C0D4000000              imul    rax, rax, 212
+   496 00000542 4801D0                      add     rax, rdx
+   497 00000545 488B8D10FFFFFF              mov     rcx, qword[rbp-240]
+   498 0000054C 488B9D18FFFFFF              mov     rbx, qword[rbp-232]
+   499 00000553 48894804                    mov     qword[rax+4], rcx
+   500 00000557 4889580C                    mov     qword[rax+12], rbx
+   501 0000055B 488B8D20FFFFFF              mov     rcx, qword[rbp-224]
+   502 00000562 488B9D28FFFFFF              mov     rbx, qword[rbp-216]
+   503 00000569 48894814                    mov     qword[rax+20], rcx
+   504 0000056D 4889581C                    mov     qword[rax+28], rbx
+   505 00000571 488B8D30FFFFFF              mov     rcx, qword[rbp-208]
+   506 00000578 488B9D38FFFFFF              mov     rbx, qword[rbp-200]
+   507 0000057F 48894824                    mov     qword[rax+36], rcx
+   508 00000583 4889582C                    mov     qword[rax+44], rbx
+   509 00000587 488B8D40FFFFFF              mov     rcx, qword[rbp-192]
+   510 0000058E 488B9D48FFFFFF              mov     rbx, qword[rbp-184]
+   511 00000595 48894834                    mov     qword[rax+52], rcx
+   512 00000599 4889583C                    mov     qword[rax+60], rbx
+   513 0000059D 488B8D50FFFFFF              mov     rcx, qword[rbp-176]
+   514 000005A4 488B9D58FFFFFF              mov     rbx, qword[rbp-168]
+   515 000005AB 48894844                    mov     qword[rax+68], rcx
+   516 000005AF 4889584C                    mov     qword[rax+76], rbx
+   517 000005B3 488B8D60FFFFFF              mov     rcx, qword[rbp-160]
+   518 000005BA 488B9D68FFFFFF              mov     rbx, qword[rbp-152]
+   519 000005C1 48894854                    mov     qword[rax+84], rcx
+   520 000005C5 4889585C                    mov     qword[rax+92], rbx
+   521 000005C9 488B8D70FFFFFF              mov     rcx, qword[rbp-144]
+   522 000005D0 488B9D78FFFFFF              mov     rbx, qword[rbp-136]
+   523 000005D7 48894864                    mov     qword[rax+100], rcx
+   524 000005DB 4889586C                    mov     qword[rax+108], rbx
+   525 000005DF 488B4D80                    mov     rcx, qword[rbp-128]
+   526 000005E3 488B5D88                    mov     rbx, qword[rbp-120]
+   527 000005E7 48894874                    mov     qword[rax+116], rcx
+   528 000005EB 4889587C                    mov     qword[rax+124], rbx
+   529 000005EF 488B4D90                    mov     rcx, qword[rbp-112]
+   530 000005F3 488B5D98                    mov     rbx, qword[rbp-104]
+   531 000005F7 48898884000000              mov     qword[rax+132], rcx
+   532 000005FE 4889988C000000              mov     qword[rax+140], rbx
+   533 00000605 488B4DA0                    mov     rcx, qword[rbp-96]
+   534 00000609 488B5DA8                    mov     rbx, qword[rbp-88]
+   535 0000060D 48898894000000              mov     qword[rax+148], rcx
+   536 00000614 4889989C000000              mov     qword[rax+156], rbx
+   537 0000061B 488B4DB0                    mov     rcx, qword[rbp-80]
+   538 0000061F 488B5DB8                    mov     rbx, qword[rbp-72]
+   539 00000623 488988A4000000              mov     qword[rax+164], rcx
+   540 0000062A 488998AC000000              mov     qword[rax+172], rbx
+   541 00000631 488B4DC0                    mov     rcx, qword[rbp-64]
+   542 00000635 488B5DC8                    mov     rbx, qword[rbp-56]
+   543 00000639 488988B4000000              mov     qword[rax+180], rcx
+   544 00000640 488998BC000000              mov     qword[rax+188], rbx
+   545 00000647 488B4DD0                    mov     rcx, qword[rbp-48]
+   546 0000064B 488B5DD8                    mov     rbx, qword[rbp-40]
+   547 0000064F 488988C4000000              mov     qword[rax+196], rcx
+   548 00000656 488998CC000000              mov     qword[rax+204], rbx
+   549 0000065D 8B55E0                      mov     edx, dword[rbp-32]
+   550 00000660 8990D4000000                mov     dword[rax+212], edx
+   551 00000666 8B45EC                      mov     eax, dword[rbp-20]
+   552 00000669 2945E4                      sub     dword[rbp-28], eax
+   553                                  .for_cond3:
+   554 0000066C 837DE400                    cmp     dword[rbp-28], 0
+   555 00000670 785D                        js      .loop_end
+   556 00000672 8B45E4                      mov     eax, dword[rbp-28]
+   557 00000675 4898                        cdqe
+   558 00000677 4869D0D4000000              imul    rdx, rax, 212
+   559 0000067E 488B8508FFFFFF              mov     rax, qword[rbp-248]
+   560 00000685 4801D0                      add     rax, rdx
+   561 00000688 4883C010                    add     rax, 16
+   562 0000068C 4889C7                      mov     rdi, rax
+   563 0000068F E8(00000000)                call    func
+   564 00000694 66480F7EC3                  movq    rbx, xmm0
+   565 00000699 8B55E4                      mov     edx, dword[rbp-28]
+   566 0000069C 8B45EC                      mov     eax, dword[rbp-20]
+   567 0000069F 01D0                        add     eax, edx
+   568 000006A1 4898                        cdqe
+   569 000006A3 4869D0D4000000              imul    rdx, rax, 212
+   570 000006AA 488B8508FFFFFF              mov     rax, qword[rbp-248]
+   571 000006B1 4801D0                      add     rax, rdx
+   572 000006B4 4883C010                    add     rax, 16
+   573 000006B8 4889C7                      mov     rdi, rax
+   574 000006BB E8(00000000)                call    func
+   575 000006C0 66480F6ECB                  movq    xmm1, rbx
+   576 000006C5 660F2FC8                    comisd  xmm1, xmm0
+   577 000006C9 0F87DAFBFFFF                ja      .for_loop3
+   578                                  .loop_end:
+   579 000006CF 8345E801                    add     dword[rbp-24], 1
+   580                                  .for_cond2:
+   581 000006D3 488B8508FFFFFF              mov     rax, qword[rbp-248]
+   582 000006DA 8B00                        mov     eax, dword[rax]
+   583 000006DC 3945E8                      cmp     dword[rbp-24], eax
+   584 000006DF 0F8CB6FBFFFF                jl      .for_loop2
+   585 000006E5 8B45EC                      mov     eax, dword[rbp-20]
+   586 000006E8 89C2                        mov     edx, eax
+   587 000006EA C1EA1F                      shr     edx, 31
+   588 000006ED 01D0                        add     eax, edx
+   589 000006EF D1F8                        sar     eax, 1
+   590 000006F1 8945EC                      mov     dword[rbp-20], eax
+   591                                  .for_cond1:
+   592 000006F4 837DEC00                    cmp     dword[rbp-20], 0
+   593 000006F8 0F8F92FBFFFF                jg      .for_loop1
+   594 000006FE B801000000                  mov     eax, 1
+   595 00000703 488B5DF8                    mov     rbx, qword[rbp-8]
+   596 00000707 C9                          leave
+   597 00000708 C3                          ret

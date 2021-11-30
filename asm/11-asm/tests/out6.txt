@@ -1,0 +1,202 @@
+Filled Container:
+cycle encryption: text = qbhcdarz | encrypted text = qbhcdarz | n = 32 | func result = 94.111111
+cycle encryption: text = dd | encrypted text = dd | n = 1 | func result = 66.666667
+number encryption: text = mowfrxsjybldb | encrypted text = mowfr5sjybldb | symbols = ['x' -> '5'] | func result = 101.500000
+number encryption: text = ynecdygg | encrypted text = ynecdygg | symbols = ['r' -> '0'] | func result = 95.333333
+cycle encryption: text = ellnmpapqfwkhopkmco | encrypted text = qfwkhopkmcoellnmpap | n = 46 | func result = 102.550000
+character encryption: text = e | encrypted text = e | symbols = ['n' -> 'w'] | func result = 50.500000
+character encryption: text = buqcljji | encrypted text = buqcljji | symbols = ['s' -> 'q'] | func result = 94.666667
+character encryption: text = t | encrypted text = t | symbols = ['w' -> 'm'] | func result = 58.000000
+character encryption: text = rrbljptnsnfwzqfjmafadrrwso | encrypted text = rrbljptnsnfwzqfjmafadrrwso | symbols = ['i' -> 'x'] | func result = 105.370370
+number encryption: text = qhffbsaqx | encrypted text = qhffbsaqx | symbols = ['n' -> '8'] | func result = 96.400000
+number encryption: text = hchz | encrypted text = hchz | symbols = ['a' -> '4'] | func result = 85.800000
+number encryption: text = ozjkpqpxrjxkitzyxacbhhkicqcoe | encrypted text = ozjkpqpxrjxkitzyxacbhhkicqcoe | symbols = ['m' -> '1'] | func result = 105.700000
+character encryption: text = dwdwfcgpx | encrypted text = dwdwfcgpx | symbols = ['t' -> 'o'] | func result = 97.400000
+number encryption: text = dlcgdewhtaciohordtqkvwcsgspqoq | encrypted text = dlcgdewhtaciohordtqkvwcsgspqoq | symbols = ['u' -> '4'] | func result = 104.677419
+number encryption: text = wnnyqxnzlgdgwpbtr | encrypted text = wnnyqxnzlgdgwpbtr | symbols = ['a' -> '0'] | func result = 105.444444
+cycle encryption: text = euguumoqcdrubetokyxhoac | encrypted text = hoaceuguumoqcdrubetokyx | n = 88 | func result = 104.291667
+number encryption: text = rdryxlmndqtukwag | encrypted text = rdryxl1ndqtukwag | symbols = ['m' -> '1'] | func result = 104.000000
+cycle encryption: text = wcibxubumenmeyatdrmydiajxl | encrypted text = umenmeyatdrmydiajxlwcibxub | n = 7 | func result = 104.333333
+number encryption: text = zhlvihjouvsuyoypay | encrypted text = zhlvihjouvsuyoypay | symbols = ['q' -> '9'] | func result = 106.736842
+character encryption: text = otehzriicfskpggkbbipzzrzucxam | encrypted text = otehzriicfskpggkbbipzzrzucxam | symbols = ['y' -> 'e'] | func result = 105.366667
+cycle encryption: text = ruowzgiooobpp | encrypted text = owzgiooobppru | n = 15 | func result = 103.285714
+number encryption: text = apjnadqhdcnvwdtxjbmyppph | encrypted text = apjnadqhdcnv1dtxjbmyppph | symbols = ['w' -> '1'] | func result = 103.800000
+cycle encryption: text = sgdhi | encrypted text = sgdhi | n = 15 | func result = 87.833333
+number encryption: text = x | encrypted text = x | symbols = ['b' -> '3'] | func result = 60.000000
+character encryption: text = uyibyebmwsiqyoygyxymzevypzvje | encrypted text = uyibyebmwsiqyoygyxymzeuypzuje | symbols = ['v' -> 'u'] | func result = 109.000000
+cycle encryption: text = uf | encrypted text = fu | n = 35 | func result = 73.000000
+character encryption: text = igsieehkchzdflilrjqfnxztqrsv | encrypted text = igsieehkchzdflilrjqfndztqrsv | symbols = ['x' -> 'd'] | func result = 105.241379
+character encryption: text = enbppkqtpddbuotbbqcwivrfxjujjdd | encrypted text = enbkkkqtkddbuotbbqcwivrfxjujjdd | symbols = ['p' -> 'k'] | func result = 104.500000
+cycle encryption: text = dgaijvwcya | encrypted text = ijvwcyadga | n = 53 | func result = 96.818182
+character encryption: text = vygehljxepb | encrypted text = vygehljxepb | symbols = ['w' -> 'e'] | func result = 99.333333
+number encryption: text = zubdu | encrypted text = zubdu | symbols = ['q' -> '5'] | func result = 92.333333
+cycle encryption: text = qpqw | encrypted text = qwqp | n = 54 | func result = 91.400000
+cycle encryption: text = yddwyvvburczmgyjgfdxvtnunn | encrypted text = nyddwyvvburczmgyjgfdxvtnun | n = 25 | func result = 107.111111
+number encryption: text = uiupfxlzbknhkwppanltcfir | encrypted text = uiu5fxlzbknhkw55anltcfir | symbols = ['p' -> '5'] | func result = 104.920000
+character encryption: text = oyvegurfwcsfmoxeqmrjowrghw | encrypted text = oyvegurfwcsfmoxeqmrjowrghw | symbols = ['d' -> 'd'] | func result = 106.481481
+character encryption: text = hkgccnaehhsveymqpxhlrnunyf | encrypted text = hkgccnaehhsveymqpxhlrnunyf | symbols = ['o' -> 'b'] | func result = 104.555556
+cycle encryption: text = jeuygafoubutpnimuwf | encrypted text = pnimuwfjeuygafoubut | n = 12 | func result = 104.000000
+character encryption: text = qdorxxvrwctdsneogvbpkxlpgdirbf | encrypted text = qdorxxvrwctdjneogvbpkxlpgdirbf | symbols = ['s' -> 'j'] | func result = 105.838710
+cycle encryption: text = gynkrrefxsnvucftpwctgtwmxnupy | encrypted text = rrefxsnvucftpwctgtwmxnupygynk | n = 91 | func result = 108.066667
+character encryption: text = nublmo | encrypted text = nublmo | symbols = ['g' -> 'c'] | func result = 93.285714
+character encryption: text = efszbexrampetvhqnddjeqvuy | encrypted text = efszbexrampenvhqnddjeqvuy | symbols = ['t' -> 'n'] | func result = 104.961538
+cycle encryption: text = frpjvoaxdpcwmjobmskskfojne | encrypted text = fojnefrpjvoaxdpcwmjobmsksk | n = 47 | func result = 104.333333
+character encryption: text = fwltwjwnnvbwjckdmeouuzhyvh | encrypted text = fwltwjwnnvbwjckdmeouuzhyvh | symbols = ['g' -> 'x'] | func result = 106.666667
+character encryption: text = xxpitcvograiddvhrrdsycqhkl | encrypted text = xxpitcvograiddvhrrdsycqhkl | symbols = ['w' -> 'u'] | func result = 105.074074
+cycle encryption: text = mbaqwqwp | encrypted text = mbaqwqwp | n = 32 | func result = 97.777778
+cycle encryption: text = vfgvjwdvjjafqzzxlcxdzncqgjl | encrypted text = jafqzzxlcxdzncqgjlvfgvjwdvj | n = 90 | func result = 105.714286
+cycle encryption: text = fgvicetcmkbljopgtqvv | encrypted text = bljopgtqvvfgvicetcmk | n = 50 | func result = 102.952381
+character encryption: text = vhesnkqxmwrqidrv | encrypted text = vhesnkqxmwrqidrv | symbols = ['g' -> 's'] | func result = 104.705882
+cycle encryption: text = yktheyentmrobdeyqcrg | encrypted text = rgyktheyentmrobdeyqc | n = 58 | func result = 103.809524
+number encryption: text = eixwjjrqop | encrypted text = e3xwjjrqop | symbols = ['i' -> '3'] | func result = 100.636364
+character encryption: text = xdipfzwswybgfylqvj | encrypted text = xdipfzwswybgfylqvg | symbols = ['j' -> 'g'] | func result = 105.473684
+cycle encryption: text = yauuzdrc | encrypted text = zdrcyauu | n = 28 | func result = 98.555556
+character encryption: text = ffrkeecbpdi | encrypted text = ffrpeecbpdi | symbols = ['k' -> 'p'] | func result = 95.083333
+number encryption: text = cxjhrnxcxmj | encrypted text = cxjhrnxcxmj | symbols = ['i' -> '3'] | func result = 100.583333
+character encryption: text = xdrmgzebhnlmw | encrypted text = xdrmgzebhnlmw | symbols = ['o' -> 'h'] | func result = 101.214286
+character encryption: text = hsfqueeexgrujigs | encrypted text = wsfqueeexgrujigs | symbols = ['h' -> 'w'] | func result = 102.176471
+character encryption: text = wvrftwapdtutpbztygnsrxajjngcomi | encrypted text = wrrftwapdtutpbztygnsrxajjngcomi | symbols = ['v' -> 'r'] | func result = 106.968750
+number encryption: text = szn | encrypted text = szn | symbols = ['d' -> '0'] | func result = 86.750000
+cycle encryption: text = cnjulkfuzmxn | encrypted text = njulkfuzmxnc | n = 73 | func result = 102.076923
+number encryption: text = ckjcazxdrt | encrypted text = ckjcazxdrt | symbols = ['e' -> '8'] | func result = 98.181818
+number encryption: text = czybnvqqcqcjitlvcnvbmasidzgw | encrypted text = czybnv44c4cjitlvcnvbmasidzgw | symbols = ['q' -> '4'] | func result = 105.275862
+number encryption: text = pwmfbfjkncvkelh | encrypted text = pwmfbfjkncvkelh | symbols = ['z' -> '5'] | func result = 100.125000
+character encryption: text = nlunmppnlgjznkewwuysgefonexpmms | encrypted text = nlunmppnlgcznkewwuysgefonexpmms | symbols = ['j' -> 'c'] | func result = 107.156250
+character encryption: text = zqmkqzxuvtqvnxbslqzkglzam | encrypted text = zqmkqzxuvtqvnxbslqzkglzam | symbols = ['o' -> 'p'] | func result = 108.461538
+character encryption: text = lvybwxxttqognrbaiakqllszkh | encrypted text = lvybwxxttqognrbaiakqllszkh | symbols = ['d' -> 'n'] | func result = 106.222222
+character encryption: text = oqklpeef | encrypted text = oqklpeef | symbols = ['c' -> 'o'] | func result = 95.000000
+number encryption: text = qhodsgcfoh | encrypted text = qh0dsgcf0h | symbols = ['o' -> '0'] | func result = 96.545455
+number encryption: text = xwtoayuvnojdjftqtwkba | encrypted text = xwtoayuvnojdjftqtwkba | symbols = ['h' -> '0'] | func result = 105.454545
+character encryption: text = qwsp | encrypted text = qwsp | symbols = ['i' -> 'u'] | func result = 91.800000
+character encryption: text = aqbdbgwtb | encrypted text = aqbdbvwtb | symbols = ['g' -> 'v'] | func result = 94.200000
+character encryption: text = nfnbyjvpdjxyuzqxstat | encrypted text = nfnbyjvpdjxyuzqxstat | symbols = ['e' -> 't'] | func result = 106.666667
+character encryption: text = oofremgfkrbc | encrypted text = oofremgfkrbc | symbols = ['p' -> 'c'] | func result = 97.769231
+cycle encryption: text = fthgojhdnaywpnbitoraai | encrypted text = wpnbitoraaifthgojhdnay | n = 33 | func result = 102.521739
+cycle encryption: text = fpdawlohssvtqtk | encrypted text = awlohssvtqtkfpd | n = 78 | func result = 103.312500
+cycle encryption: text = lucqxswy | encrypted text = ylucqxsw | n = 31 | func result = 101.333333
+character encryption: text = rtzlqsekejhzk | encrypted text = rtzlqsekejhzk | symbols = ['n' -> 't'] | func result = 102.571429
+number encryption: text = chvczysvdgcxbbiswmeaylzifktm | encrypted text = chvczysvdgcxbbiswm3aylzifktm | symbols = ['e' -> '3'] | func result = 105.172414
+cycle encryption: text = tgpojxqi | encrypted text = qitgpojx | n = 78 | func result = 98.444444
+cycle encryption: text = qdjqnqcgdqrnlluieazvmwnuuf | encrypted text = uieazvmwnuufqdjqnqcgdqrnll | n = 66 | func result = 105.333333
+character encryption: text = vgmliuqandlyavfauaosnln | encrypted text = vgmliuqandlyavfauaosnln | symbols = ['x' -> 'v'] | func result = 103.791667
+number encryption: text = umoiawcqxswkqwgxyazntnaikameyb | encrypted text = umoiawcqxswkqwgxyazntnaikameyb | symbols = ['v' -> '3'] | func result = 106.354839
+character encryption: text = ggxachrynqxqqmlfotpqhvoki | encrypted text = ggxachrynbxbbmlfotpbhvoki | symbols = ['q' -> 'b'] | func result = 105.615385
+number encryption: text = xjvb | encrypted text = xjvb | symbols = ['q' -> '4'] | func result = 88.400000
+cycle encryption: text = xnjcberrnmixxsyjhovengbpyq | encrypted text = yjhovengbpyqxnjcberrnmixxs | n = 92 | func result = 105.888889
+number encryption: text = rygxrxkfhicainhwilkqmbp | encrypted text = ry8xrxkfhicainhwilkqmbp | symbols = ['g' -> '8'] | func result = 104.000000
+cycle encryption: text = nzxtzqsjwatycbmjawwmninep | encrypted text = bmjawwmninepnzxtzqsjwatyc | n = 13 | func result = 106.576923
+cycle encryption: text = ltxmkpvgrrgtuseurageltkcap | encrypted text = useurageltkcapltxmkpvgrrgt | n = 64 | func result = 105.333333
+cycle encryption: text = qawixezqkvlfbhwcocpjmrmbpbeg | encrypted text = rmbpbegqawixezqkvlfbhwcocpjm | n = 49 | func result = 104.034483
+cycle encryption: text = uuvkesvjtdhvtjmexfqbvufdpa | encrypted text = vjtdhvtjmexfqbvufdpauuvkes | n = 32 | func result = 105.481481
+cycle encryption: text = tbplyzedicwsodpwtqrp | encrypted text = edicwsodpwtqrptbplyz | n = 66 | func result = 105.380952
+number encryption: text = gfnpaqelofrsotqiktxipqzeqvlqmu | encrypted text = gfnpaqelof3sotqiktxipqzeqvlqmu | symbols = ['r' -> '3'] | func result = 106.677419
+number encryption: text = pmixfclbs | encrypted text = pmixfclbs | symbols = ['j' -> '5'] | func result = 96.800000
+character encryption: text = ujcpwsdqhxrkiueziowoqjpie | encrypted text = ujcpwsdqhxrkiueziswsqjpie | symbols = ['o' -> 's'] | func result = 105.923077
+cycle encryption: text = nmkjgncpmvauqgtausokbfugjtfiu | encrypted text = kbfugjtfiunmkjgncpmvauqgtauso | n = 48 | func result = 104.733333
+character encryption: text = azamucimicnewdoxjlfuemdadgkhufs | encrypted text = azamucimicnewdoxclfuemdadgkhufs | symbols = ['j' -> 'c'] | func result = 103.375000
+character encryption: text = nivcorhf | encrypted text = nijcorhf | symbols = ['v' -> 'j'] | func result = 95.888889
+cycle encryption: text = quoyevs | encrypted text = oyevsqu | n = 100 | func result = 99.500000
+number encryption: text = krhunljgsoxleuyyfqutozq | encrypted text = krhun8jgsox8euyyfqutozq | symbols = ['l' -> '8'] | func result = 107.375000
+character encryption: text = yepfaesjlkzivdev | encrypted text = yepfaesjlkzivdev | symbols = ['g' -> 'y'] | func result = 102.000000
+cycle encryption: text = xjndjrxhrdyyddqnqdoayshwx | encrypted text = xxjndjrxhrdyyddqnqdoayshw | n = 49 | func result = 106.115385
+Sorted Container:
+character encryption: text = e | encrypted text = e | symbols = ['n' -> 'w'] | func result = 50.500000
+character encryption: text = t | encrypted text = t | symbols = ['w' -> 'm'] | func result = 58.000000
+number encryption: text = x | encrypted text = x | symbols = ['b' -> '3'] | func result = 60.000000
+cycle encryption: text = dd | encrypted text = dd | n = 1 | func result = 66.666667
+cycle encryption: text = uf | encrypted text = fu | n = 35 | func result = 73.000000
+number encryption: text = hchz | encrypted text = hchz | symbols = ['a' -> '4'] | func result = 85.800000
+number encryption: text = szn | encrypted text = szn | symbols = ['d' -> '0'] | func result = 86.750000
+cycle encryption: text = sgdhi | encrypted text = sgdhi | n = 15 | func result = 87.833333
+number encryption: text = xjvb | encrypted text = xjvb | symbols = ['q' -> '4'] | func result = 88.400000
+cycle encryption: text = qpqw | encrypted text = qwqp | n = 54 | func result = 91.400000
+character encryption: text = qwsp | encrypted text = qwsp | symbols = ['i' -> 'u'] | func result = 91.800000
+number encryption: text = zubdu | encrypted text = zubdu | symbols = ['q' -> '5'] | func result = 92.333333
+character encryption: text = nublmo | encrypted text = nublmo | symbols = ['g' -> 'c'] | func result = 93.285714
+cycle encryption: text = qbhcdarz | encrypted text = qbhcdarz | n = 32 | func result = 94.111111
+character encryption: text = aqbdbgwtb | encrypted text = aqbdbvwtb | symbols = ['g' -> 'v'] | func result = 94.200000
+character encryption: text = buqcljji | encrypted text = buqcljji | symbols = ['s' -> 'q'] | func result = 94.666667
+character encryption: text = oqklpeef | encrypted text = oqklpeef | symbols = ['c' -> 'o'] | func result = 95.000000
+character encryption: text = ffrkeecbpdi | encrypted text = ffrpeecbpdi | symbols = ['k' -> 'p'] | func result = 95.083333
+number encryption: text = ynecdygg | encrypted text = ynecdygg | symbols = ['r' -> '0'] | func result = 95.333333
+character encryption: text = nivcorhf | encrypted text = nijcorhf | symbols = ['v' -> 'j'] | func result = 95.888889
+number encryption: text = qhffbsaqx | encrypted text = qhffbsaqx | symbols = ['n' -> '8'] | func result = 96.400000
+number encryption: text = qhodsgcfoh | encrypted text = qh0dsgcf0h | symbols = ['o' -> '0'] | func result = 96.545455
+number encryption: text = pmixfclbs | encrypted text = pmixfclbs | symbols = ['j' -> '5'] | func result = 96.800000
+cycle encryption: text = dgaijvwcya | encrypted text = ijvwcyadga | n = 53 | func result = 96.818182
+character encryption: text = dwdwfcgpx | encrypted text = dwdwfcgpx | symbols = ['t' -> 'o'] | func result = 97.400000
+character encryption: text = oofremgfkrbc | encrypted text = oofremgfkrbc | symbols = ['p' -> 'c'] | func result = 97.769231
+cycle encryption: text = mbaqwqwp | encrypted text = mbaqwqwp | n = 32 | func result = 97.777778
+number encryption: text = ckjcazxdrt | encrypted text = ckjcazxdrt | symbols = ['e' -> '8'] | func result = 98.181818
+cycle encryption: text = tgpojxqi | encrypted text = qitgpojx | n = 78 | func result = 98.444444
+cycle encryption: text = yauuzdrc | encrypted text = zdrcyauu | n = 28 | func result = 98.555556
+character encryption: text = vygehljxepb | encrypted text = vygehljxepb | symbols = ['w' -> 'e'] | func result = 99.333333
+cycle encryption: text = quoyevs | encrypted text = oyevsqu | n = 100 | func result = 99.500000
+number encryption: text = pwmfbfjkncvkelh | encrypted text = pwmfbfjkncvkelh | symbols = ['z' -> '5'] | func result = 100.125000
+number encryption: text = cxjhrnxcxmj | encrypted text = cxjhrnxcxmj | symbols = ['i' -> '3'] | func result = 100.583333
+number encryption: text = eixwjjrqop | encrypted text = e3xwjjrqop | symbols = ['i' -> '3'] | func result = 100.636364
+character encryption: text = xdrmgzebhnlmw | encrypted text = xdrmgzebhnlmw | symbols = ['o' -> 'h'] | func result = 101.214286
+cycle encryption: text = lucqxswy | encrypted text = ylucqxsw | n = 31 | func result = 101.333333
+number encryption: text = mowfrxsjybldb | encrypted text = mowfr5sjybldb | symbols = ['x' -> '5'] | func result = 101.500000
+character encryption: text = yepfaesjlkzivdev | encrypted text = yepfaesjlkzivdev | symbols = ['g' -> 'y'] | func result = 102.000000
+cycle encryption: text = cnjulkfuzmxn | encrypted text = njulkfuzmxnc | n = 73 | func result = 102.076923
+character encryption: text = hsfqueeexgrujigs | encrypted text = wsfqueeexgrujigs | symbols = ['h' -> 'w'] | func result = 102.176471
+cycle encryption: text = fthgojhdnaywpnbitoraai | encrypted text = wpnbitoraaifthgojhdnay | n = 33 | func result = 102.521739
+cycle encryption: text = ellnmpapqfwkhopkmco | encrypted text = qfwkhopkmcoellnmpap | n = 46 | func result = 102.550000
+character encryption: text = rtzlqsekejhzk | encrypted text = rtzlqsekejhzk | symbols = ['n' -> 't'] | func result = 102.571429
+cycle encryption: text = fgvicetcmkbljopgtqvv | encrypted text = bljopgtqvvfgvicetcmk | n = 50 | func result = 102.952381
+cycle encryption: text = ruowzgiooobpp | encrypted text = owzgiooobppru | n = 15 | func result = 103.285714
+cycle encryption: text = fpdawlohssvtqtk | encrypted text = awlohssvtqtkfpd | n = 78 | func result = 103.312500
+character encryption: text = azamucimicnewdoxjlfuemdadgkhufs | encrypted text = azamucimicnewdoxclfuemdadgkhufs | symbols = ['j' -> 'c'] | func result = 103.375000
+character encryption: text = vgmliuqandlyavfauaosnln | encrypted text = vgmliuqandlyavfauaosnln | symbols = ['x' -> 'v'] | func result = 103.791667
+number encryption: text = apjnadqhdcnvwdtxjbmyppph | encrypted text = apjnadqhdcnv1dtxjbmyppph | symbols = ['w' -> '1'] | func result = 103.800000
+cycle encryption: text = yktheyentmrobdeyqcrg | encrypted text = rgyktheyentmrobdeyqc | n = 58 | func result = 103.809524
+number encryption: text = rdryxlmndqtukwag | encrypted text = rdryxl1ndqtukwag | symbols = ['m' -> '1'] | func result = 104.000000
+number encryption: text = rygxrxkfhicainhwilkqmbp | encrypted text = ry8xrxkfhicainhwilkqmbp | symbols = ['g' -> '8'] | func result = 104.000000
+cycle encryption: text = jeuygafoubutpnimuwf | encrypted text = pnimuwfjeuygafoubut | n = 12 | func result = 104.000000
+cycle encryption: text = qawixezqkvlfbhwcocpjmrmbpbeg | encrypted text = rmbpbegqawixezqkvlfbhwcocpjm | n = 49 | func result = 104.034483
+cycle encryption: text = euguumoqcdrubetokyxhoac | encrypted text = hoaceuguumoqcdrubetokyx | n = 88 | func result = 104.291667
+cycle encryption: text = wcibxubumenmeyatdrmydiajxl | encrypted text = umenmeyatdrmydiajxlwcibxub | n = 7 | func result = 104.333333
+cycle encryption: text = frpjvoaxdpcwmjobmskskfojne | encrypted text = fojnefrpjvoaxdpcwmjobmsksk | n = 47 | func result = 104.333333
+character encryption: text = enbppkqtpddbuotbbqcwivrfxjujjdd | encrypted text = enbkkkqtkddbuotbbqcwivrfxjujjdd | symbols = ['p' -> 'k'] | func result = 104.500000
+character encryption: text = hkgccnaehhsveymqpxhlrnunyf | encrypted text = hkgccnaehhsveymqpxhlrnunyf | symbols = ['o' -> 'b'] | func result = 104.555556
+number encryption: text = dlcgdewhtaciohordtqkvwcsgspqoq | encrypted text = dlcgdewhtaciohordtqkvwcsgspqoq | symbols = ['u' -> '4'] | func result = 104.677419
+character encryption: text = vhesnkqxmwrqidrv | encrypted text = vhesnkqxmwrqidrv | symbols = ['g' -> 's'] | func result = 104.705882
+cycle encryption: text = nmkjgncpmvauqgtausokbfugjtfiu | encrypted text = kbfugjtfiunmkjgncpmvauqgtauso | n = 48 | func result = 104.733333
+number encryption: text = uiupfxlzbknhkwppanltcfir | encrypted text = uiu5fxlzbknhkw55anltcfir | symbols = ['p' -> '5'] | func result = 104.920000
+character encryption: text = efszbexrampetvhqnddjeqvuy | encrypted text = efszbexrampenvhqnddjeqvuy | symbols = ['t' -> 'n'] | func result = 104.961538
+character encryption: text = xxpitcvograiddvhrrdsycqhkl | encrypted text = xxpitcvograiddvhrrdsycqhkl | symbols = ['w' -> 'u'] | func result = 105.074074
+number encryption: text = chvczysvdgcxbbiswmeaylzifktm | encrypted text = chvczysvdgcxbbiswm3aylzifktm | symbols = ['e' -> '3'] | func result = 105.172414
+character encryption: text = igsieehkchzdflilrjqfnxztqrsv | encrypted text = igsieehkchzdflilrjqfndztqrsv | symbols = ['x' -> 'd'] | func result = 105.241379
+number encryption: text = czybnvqqcqcjitlvcnvbmasidzgw | encrypted text = czybnv44c4cjitlvcnvbmasidzgw | symbols = ['q' -> '4'] | func result = 105.275862
+cycle encryption: text = qdjqnqcgdqrnlluieazvmwnuuf | encrypted text = uieazvmwnuufqdjqnqcgdqrnll | n = 66 | func result = 105.333333
+cycle encryption: text = ltxmkpvgrrgtuseurageltkcap | encrypted text = useurageltkcapltxmkpvgrrgt | n = 64 | func result = 105.333333
+character encryption: text = otehzriicfskpggkbbipzzrzucxam | encrypted text = otehzriicfskpggkbbipzzrzucxam | symbols = ['y' -> 'e'] | func result = 105.366667
+character encryption: text = rrbljptnsnfwzqfjmafadrrwso | encrypted text = rrbljptnsnfwzqfjmafadrrwso | symbols = ['i' -> 'x'] | func result = 105.370370
+cycle encryption: text = tbplyzedicwsodpwtqrp | encrypted text = edicwsodpwtqrptbplyz | n = 66 | func result = 105.380952
+number encryption: text = wnnyqxnzlgdgwpbtr | encrypted text = wnnyqxnzlgdgwpbtr | symbols = ['a' -> '0'] | func result = 105.444444
+number encryption: text = xwtoayuvnojdjftqtwkba | encrypted text = xwtoayuvnojdjftqtwkba | symbols = ['h' -> '0'] | func result = 105.454545
+character encryption: text = xdipfzwswybgfylqvj | encrypted text = xdipfzwswybgfylqvg | symbols = ['j' -> 'g'] | func result = 105.473684
+cycle encryption: text = uuvkesvjtdhvtjmexfqbvufdpa | encrypted text = vjtdhvtjmexfqbvufdpauuvkes | n = 32 | func result = 105.481481
+character encryption: text = ggxachrynqxqqmlfotpqhvoki | encrypted text = ggxachrynbxbbmlfotpbhvoki | symbols = ['q' -> 'b'] | func result = 105.615385
+number encryption: text = ozjkpqpxrjxkitzyxacbhhkicqcoe | encrypted text = ozjkpqpxrjxkitzyxacbhhkicqcoe | symbols = ['m' -> '1'] | func result = 105.700000
+cycle encryption: text = vfgvjwdvjjafqzzxlcxdzncqgjl | encrypted text = jafqzzxlcxdzncqgjlvfgvjwdvj | n = 90 | func result = 105.714286
+character encryption: text = qdorxxvrwctdsneogvbpkxlpgdirbf | encrypted text = qdorxxvrwctdjneogvbpkxlpgdirbf | symbols = ['s' -> 'j'] | func result = 105.838710
+cycle encryption: text = xnjcberrnmixxsyjhovengbpyq | encrypted text = yjhovengbpyqxnjcberrnmixxs | n = 92 | func result = 105.888889
+character encryption: text = ujcpwsdqhxrkiueziowoqjpie | encrypted text = ujcpwsdqhxrkiueziswsqjpie | symbols = ['o' -> 's'] | func result = 105.923077
+cycle encryption: text = xjndjrxhrdyyddqnqdoayshwx | encrypted text = xxjndjrxhrdyyddqnqdoayshw | n = 49 | func result = 106.115385
+character encryption: text = lvybwxxttqognrbaiakqllszkh | encrypted text = lvybwxxttqognrbaiakqllszkh | symbols = ['d' -> 'n'] | func result = 106.222222
+number encryption: text = umoiawcqxswkqwgxyazntnaikameyb | encrypted text = umoiawcqxswkqwgxyazntnaikameyb | symbols = ['v' -> '3'] | func result = 106.354839
+character encryption: text = oyvegurfwcsfmoxeqmrjowrghw | encrypted text = oyvegurfwcsfmoxeqmrjowrghw | symbols = ['d' -> 'd'] | func result = 106.481481
+cycle encryption: text = nzxtzqsjwatycbmjawwmninep | encrypted text = bmjawwmninepnzxtzqsjwatyc | n = 13 | func result = 106.576923
+character encryption: text = nfnbyjvpdjxyuzqxstat | encrypted text = nfnbyjvpdjxyuzqxstat | symbols = ['e' -> 't'] | func result = 106.666667
+character encryption: text = fwltwjwnnvbwjckdmeouuzhyvh | encrypted text = fwltwjwnnvbwjckdmeouuzhyvh | symbols = ['g' -> 'x'] | func result = 106.666667
+number encryption: text = gfnpaqelofrsotqiktxipqzeqvlqmu | encrypted text = gfnpaqelof3sotqiktxipqzeqvlqmu | symbols = ['r' -> '3'] | func result = 106.677419
+number encryption: text = zhlvihjouvsuyoypay | encrypted text = zhlvihjouvsuyoypay | symbols = ['q' -> '9'] | func result = 106.736842
+character encryption: text = wvrftwapdtutpbztygnsrxajjngcomi | encrypted text = wrrftwapdtutpbztygnsrxajjngcomi | symbols = ['v' -> 'r'] | func result = 106.968750
+cycle encryption: text = yddwyvvburczmgyjgfdxvtnunn | encrypted text = nyddwyvvburczmgyjgfdxvtnun | n = 25 | func result = 107.111111
+character encryption: text = nlunmppnlgjznkewwuysgefonexpmms | encrypted text = nlunmppnlgcznkewwuysgefonexpmms | symbols = ['j' -> 'c'] | func result = 107.156250
+number encryption: text = krhunljgsoxleuyyfqutozq | encrypted text = krhun8jgsox8euyyfqutozq | symbols = ['l' -> '8'] | func result = 107.375000
+cycle encryption: text = gynkrrefxsnvucftpwctgtwmxnupy | encrypted text = rrefxsnvucftpwctgtwmxnupygynk | n = 91 | func result = 108.066667
+character encryption: text = zqmkqzxuvtqvnxbslqzkglzam | encrypted text = zqmkqzxuvtqvnxbslqzkglzam | symbols = ['o' -> 'p'] | func result = 108.461538
+character encryption: text = uyibyebmwsiqyoygyxymzevypzvje | encrypted text = uyibyebmwsiqyoygyxymzeuypzuje | symbols = ['v' -> 'u'] | func result = 109.000000

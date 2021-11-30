@@ -1,0 +1,9 @@
+4
+1
+c y carrot
+1
+h e hamburger
+1
+e o queue
+1
+t r trouble

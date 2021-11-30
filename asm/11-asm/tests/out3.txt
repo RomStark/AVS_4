@@ -1,0 +1,11 @@
+Filled Container:
+character encryption: text = carrot | encrypted text = yarrot | symbols = ['c' -> 'y'] | func result = 93.000000
+character encryption: text = hamburger | encrypted text = eamburger | symbols = ['h' -> 'e'] | func result = 95.700000
+character encryption: text = queue | encrypted text = quouo | symbols = ['e' -> 'o'] | func result = 91.500000
+character encryption: text = trouble | encrypted text = rrouble | symbols = ['t' -> 'r'] | func result = 95.625000
+Sorted Container:
+character encryption: text = queue | encrypted text = quouo | symbols = ['e' -> 'o'] | func result = 91.500000
+character encryption: text = carrot | encrypted text = yarrot | symbols = ['c' -> 'y'] | func result = 93.000000
+character encryption: text = trouble | encrypted text = rrouble | symbols = ['t' -> 'r'] | func result = 95.625000
+character encryption: text = hamburger | encrypted text = eamburger | symbols = ['h' -> 'e'] | func result = 95.700000
+

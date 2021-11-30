@@ -1,0 +1,58 @@
+     1                                  ;------------------------------------------------------------------------------
+     2                                  ; func.asm - единица компиляции, вбирающая функцию для численного сравнения строк
+     3                                  ;------------------------------------------------------------------------------
+     4                                  
+     5                                  ;-------------------------------
+     6                                  ; Функция для численного сравнения строк
+     7                                  ; double func(char *text)
+     8                                  ; {
+     9                                  ;     double sum = 0;
+    10                                  ;     int i = 0;
+    11                                  ;     while (text[i])
+    12                                  ;     {
+    13                                  ;         sum += text[i];
+    14                                  ;         i++;
+    15                                  ;     }
+    16                                  ;     return sum / (i + 1);
+    17                                  ; }
+    18                                  ;-------------------------------
+    19                                  global func
+    20                                  func:
+    21 00000000 55                          push rbp
+    22 00000001 4889E5                      mov rbp, rsp
+    23 00000004 48897DE8                    mov qword[rbp - 24], rdi
+    24 00000008 660FEFC0                    pxor xmm0, xmm0
+    25 0000000C F20F1145F8                  movsd qword[rbp - 8], xmm0
+    26 00000011 C745F400000000              mov dword[rbp - 12], 0
+    27 00000018 EB2D                        jmp .L8
+    28                                  .L9:
+    29 0000001A 8B45F4                      mov eax, dword[rbp - 12]
+    30 0000001D 4863D0                      movsx rdx, eax
+    31 00000020 488B45E8                    mov rax, qword[rbp - 24]
+    32 00000024 4801D0                      add rax, rdx
+    33 00000027 0FB600                      movzx eax, byte[rax]
+    34 0000002A 0FBEC0                      movsx eax, al
+    35 0000002D 660FEFC0                    pxor xmm0, xmm0
+    36 00000031 F20F2AC0                    cvtsi2sd xmm0, eax
+    37 00000035 F20F104DF8                  movsd xmm1, qword[rbp - 8]
+    38 0000003A F20F58C1                    addsd xmm0, xmm1
+    39 0000003E F20F1145F8                  movsd qword[rbp - 8], xmm0
+    40 00000043 8345F401                    add dword[rbp - 12], 1
+    41                                  .L8:
+    42 00000047 8B45F4                      mov eax, dword[rbp - 12]
+    43 0000004A 4863D0                      movsx rdx, eax
+    44 0000004D 488B45E8                    mov rax, qword[rbp - 24]
+    45 00000051 4801D0                      add rax, rdx
+    46 00000054 0FB600                      movzx eax, byte[rax]
+    47 00000057 84C0                        test al, al
+    48 00000059 75BF                        jne .L9
+    49 0000005B 8B45F4                      mov eax, dword[rbp - 12]
+    50 0000005E 83C001                      add eax, 1
+    51 00000061 660FEFC9                    pxor xmm1, xmm1
+    52 00000065 F20F2AC8                    cvtsi2sd xmm1, eax
+    53 00000069 F20F1045F8                  movsd xmm0, qword[rbp - 8]
+    54 0000006E F20F5EC1                    divsd xmm0, xmm1
+    55 00000072 66480F7EC0                  movq rax, xmm0
+    56 00000077 66480F6EC0                  movq xmm0, rax
+    57 0000007C 5D                          pop rbp
+    58 0000007D C3                          ret

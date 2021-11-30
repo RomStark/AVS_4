@@ -1,0 +1,7 @@
+3
+1
+a v combination
+2
+4 fortune
+3
+d 6 accident
